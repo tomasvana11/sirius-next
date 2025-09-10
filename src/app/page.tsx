@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+
+/*
 export default function Home() {
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
@@ -24,7 +26,38 @@ export default function Home() {
             Save and see your changes instantly.
           </li>
         </ol>
-
+        <h2 className="text-2xl font-semibold mt-8 mb-4">Výhody naší firmy</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 w-full max-w-4xl">
+          <div className="bg-white dark:bg-neutral-900 rounded-xl shadow p-6 flex flex-col items-center text-center transition-transform transition-colors duration-200 hover:bg-white hover:scale-105 dark:hover:bg-white/10">
+            <span className="text-4xl mb-2">🚀</span>
+            <h3 className="font-bold text-lg mb-2">Rychlý rozvoj</h3>
+            <p className="text-sm text-neutral-600 dark:text-neutral-300">
+              Neustále inovujeme a posouváme naše služby kupředu.
+            </p>
+          </div>
+          <div className="bg-white dark:bg-neutral-900 rounded-xl shadow p-6 flex flex-col items-center text-center transition-transform transition-colors duration-200 hover:bg-white hover:scale-105 dark:hover:bg-white/10">
+            <span className="text-4xl mb-2">🤝</span>
+            <h3 className="font-bold text-lg mb-2">Individuální přístup</h3>
+            <p className="text-sm text-neutral-600 dark:text-neutral-300">
+              Každý klient je pro nás jedinečný a jeho potřeby jsou prioritou.
+            </p>
+          </div>
+          <div className="bg-white dark:bg-neutral-900 rounded-xl shadow p-6 flex flex-col items-center text-center transition-transform transition-colors duration-200 hover:bg-white hover:scale-105 dark:hover:bg-white/10">
+            <span className="text-4xl mb-2">💡</span>
+            <h3 className="font-bold text-lg mb-2">Inovativní řešení</h3>
+            <p className="text-sm text-neutral-600 dark:text-neutral-300">
+              Přinášíme moderní technologie a kreativní nápady do každého
+              projektu.
+            </p>
+          </div>
+          <div className="bg-white dark:bg-neutral-900 rounded-xl shadow p-6 flex flex-col items-center text-center transition-transform transition-colors duration-200 hover:bg-white hover:scale-105 dark:hover:bg-white/10">
+            <span className="text-4xl mb-2">🌍</span>
+            <h3 className="font-bold text-lg mb-2">Globální působnost</h3>
+            <p className="text-sm text-neutral-600 dark:text-neutral-300">
+              Naše služby poskytujeme klientům po celém světě.
+            </p>
+          </div>
+        </div>
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
             className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
@@ -101,3 +134,39 @@ export default function Home() {
     </div>
   );
 }
+*/
+
+export default function Custom404() {
+  return (
+    <div
+      style={{
+        backgroundColor: "black",
+        color: "white",
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontFamily:
+          "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <span
+          style={{
+            fontSize: "24px",
+            fontWeight: "600",
+            paddingRight: "20px",
+            marginRight: "20px",
+            borderRight: "1px solid #333",
+          }}
+        >
+          404
+        </span>
+        <span style={{ fontSize: "14px" }}>
+          This page could not be found.
+        </span>
+      </div>
+    </div>
+  );
+}
+
