@@ -140,8 +140,8 @@ export default function Custom404() {
   return (
     <div
       style={{
-        backgroundColor: "black",
-        color: "white",
+        backgroundColor: "white",
+        color: "black",
         height: "100vh",
         display: "flex",
         alignItems: "center",
@@ -153,17 +153,13 @@ export default function Custom404() {
       <div style={{ display: "flex", alignItems: "center" }}>
         <span
           style={{
-            fontSize: "24px",
-            fontWeight: "600",
-            paddingRight: "20px",
-            marginRight: "20px",
-            borderRight: "1px solid #333",
+            fontSize: "16px",
+            fontWeight: "400",
+            textAlign:"center",
           }}
         >
-          404
-        </span>
-        <span style={{ fontSize: "14px" }}>
-          This page could not be found.
+          Application error: a server-side exception has occurred while loading (see the server logs for more information).
+          Digest: 3582039337
         </span>
       </div>
     </div>
