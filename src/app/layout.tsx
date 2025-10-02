@@ -52,7 +52,7 @@ const inter = Inter({
 // Typy pro Top-bar z Strapi
 interface StrapiResponse<T> {
   data: T;
-  meta: Record<string, any>;
+  meta: Record<string, unknown>;
 }
 
 interface RichTextNode {
