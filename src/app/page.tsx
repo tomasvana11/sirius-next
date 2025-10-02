@@ -3,7 +3,7 @@
 // Typy pro Strapi data
 interface StrapiResponse<T> {
   data: T;
-  meta: Record<string, any>;
+  meta: Record<string, unknown>;
 }
 
 interface Homepage {
@@ -38,7 +38,10 @@ interface Homepage {
     Title: string;
     Description: string;
   };
-  Facts: any | null;
+  Facts: null | {
+    id: number;
+    [key: string]: unknown;
+  };
   Steps: {
     id: number;
     Title: string;
