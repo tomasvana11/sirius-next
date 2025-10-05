@@ -40,8 +40,8 @@ export default async function BlogPage({ params }: BlogPageProps) {
     <article>
       <ContentWrapper>
         <div className="max-w-4xl mx-auto py-8 lg:pb-14 lg:pt-8">
-          {imageUrl && (
-            <div className="relative w-full h-96 rounded-lg overflow-hidden mb-8">
+          <div className="relative w-full h-96 rounded-lg overflow-hidden mb-8 bg-neutral-200">
+            {imageUrl ? (
               <Image
                 src={imageUrl}
                 alt={blog.coverImage?.[0]?.alternativeText || blog.Title}
@@ -49,8 +49,18 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 className="object-cover"
                 priority
               />
-            </div>
-          )}
+            ) : (
+              <div className="w-full h-full flex items-center justify-center">
+                <Image
+                  src="/icons/system/img-placeholder.svg"
+                  alt="Placeholder"
+                  width={80}
+                  height={80}
+                  className="opacity-40"
+                />
+              </div>
+            )}
+          </div>
 
           <div className="max-w-3xl mx-auto">
             <Title
@@ -64,7 +74,6 @@ export default async function BlogPage({ params }: BlogPageProps) {
               <div className="text-sm font-semibold text-golden-gate bg-golden-gate/10 px-4 py-2 rounded-full border border-golden-gate/50 uppercase">
                 {formatCategory(blog.Category)}
               </div>
-
               <time className="text-sm text-neutral-600 block">
                 {new Date(blog.publishedAt).toLocaleDateString("cs-CZ", {
                   year: "numeric",
@@ -79,8 +88,8 @@ export default async function BlogPage({ params }: BlogPageProps) {
             </div>
           </div>
         </div>
-        <Separator />
 
+        <Separator />
         <FeaturedBlog />
         <ContactFormBanner />
       </ContentWrapper>

@@ -4,23 +4,20 @@ import { Title } from "@/components/Title";
 import { CareerBanner } from "@/components/CareerBanner";
 import { ContactFormBanner } from "@/components/ContactFormBanner";
 import { FeaturedBlog } from "@/components/FeaturedBlog";
+import { Numbers } from "@/components/Numbers";
+import { Hero } from "@/components/Hero";
 export default async function HomePage() {
   const homepage = await getHomepage();
 
   return (
     <div>
-      <Title as="h1">
-        Hvězda Vašeho <br />
-        finančního světa
-      </Title>
-      <Title as="h2">
-        Hvězda Vašeho <br />
-        finančního světa
-      </Title>
-      <Title as="h3">
-        Hvězda Vašeho <br />
-        finančního světa
-      </Title>
+      <Hero
+        title={homepage.HeroBanner.Title}
+        description={homepage.HeroBanner.Description}
+        backgroundImage="homepage.webp"
+        buttonText={homepage.HeroBanner.Title}
+        buttonUrl={homepage.HeroBanner.Title}
+      />
 
       <ContentWrapper>
         <h1>Obsah</h1>
@@ -69,6 +66,7 @@ export default async function HomePage() {
         <p key={check.id}>{check.Content}</p>
       ))}
       <ContentWrapper>
+        <Numbers numbers={homepage.Numbers.Number} />
         <CareerBanner />
         <FeaturedBlog />
         <ContactFormBanner />
