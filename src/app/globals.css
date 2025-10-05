@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -119,9 +120,13 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    
   }
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  button[data-slot="button"] {
+    font-family: 'Nunito', sans-serif !important;
   }
 }
