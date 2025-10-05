@@ -5,12 +5,24 @@ import { getBlogBySlug, renderRichText } from "@/lib/strapi";
 import { ContentWrapper } from "@/components/ContentWrapper";
 import { FeaturedBlog } from "@/components/FeaturedBlog";
 import { ContactFormBanner } from "@/components/ContactFormBanner";
+import { Separator } from "@/components/ui/separator";
+import { Title } from "@/components/Title";
 
 interface BlogPageProps {
   params: Promise<{
     slug: string;
   }>;
 }
+
+// Mapping pro kategorie
+const categoryMap: Record<string, string> = {
+  vzdelavani: "Vzdělávání",
+  novinky: "Novinky",
+};
+
+const formatCategory = (category: string): string => {
+  return categoryMap[category.toLowerCase()] || category;
+};
 
 export default async function BlogPage({ params }: BlogPageProps) {
   const { slug } = await params;
@@ -25,9 +37,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
     : null;
 
   return (
-    <article className="pt-16">
+    <article>
       <ContentWrapper>
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto py-8 lg:pb-14 lg:pt-8">
           {imageUrl && (
             <div className="relative w-full h-96 rounded-lg overflow-hidden mb-8">
               <Image
@@ -41,27 +53,34 @@ export default async function BlogPage({ params }: BlogPageProps) {
           )}
 
           <div className="max-w-3xl mx-auto">
-            <div className="text-sm font-semibold text-golden-gate uppercase mb-4">
-              {blog.Category}
+            <Title
+              as="h1"
+              className="text-5xl lg:text-6xl text-neutral-900 mb-6"
+            >
+              {blog.Title}
+            </Title>
+
+            <div className="flex gap-4 items-center mb-6">
+              <div className="text-sm font-semibold text-golden-gate bg-golden-gate/10 px-4 py-2 rounded-full border border-golden-gate/50 uppercase">
+                {formatCategory(blog.Category)}
+              </div>
+
+              <time className="text-sm text-neutral-600 block">
+                {new Date(blog.publishedAt).toLocaleDateString("cs-CZ", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </time>
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold text-neutral-900 mb-6">
-              {blog.Title}
-            </h1>
-
-            <time className="text-sm text-neutral-500 mb-8 block">
-              {new Date(blog.publishedAt).toLocaleDateString("cs-CZ", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </time>
-
-            <div className="prose prose-lg max-w-none text-neutral-700">
+            <div className="blog-content text-neutral-700 text-lg leading-relaxed">
               {renderRichText(blog.Content)}
             </div>
           </div>
         </div>
+        <Separator />
+
         <FeaturedBlog />
         <ContactFormBanner />
       </ContentWrapper>

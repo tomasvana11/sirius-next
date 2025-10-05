@@ -16,6 +16,8 @@ export interface StrapiResponse<T> {
     underline?: boolean;
     strikethrough?: boolean;
     url?: string;
+    level?: number;
+    format?: "ordered" | "unordered";
     children?: RichTextNode[];
   }
   
