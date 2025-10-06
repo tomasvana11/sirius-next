@@ -1,9 +1,9 @@
 import { getClientPage } from "@/lib/strapi";
 import { ContentWrapper } from "@/components/ContentWrapper";
-import { CareerBanner } from "@/components/CareerBanner";
-import { FeaturedBlog } from "@/components/FeaturedBlog";
 import { ContactFormBanner } from "@/components/ContactFormBanner";
 import { Hero } from "@/components/Hero";
+import { IconCard } from "@/components/IconCard";
+import { Title } from "@/components/Title";
 
 export default async function ClientPage() {
   const data = await getClientPage();
@@ -19,6 +19,28 @@ export default async function ClientPage() {
         buttonIsExternal={data.HeroBanner.heroBannerButton?.isExternal}
         type="default"
       />
+      <div className="bg-[#220B03] py-16 lg:py-24">
+        {data.ClaimSection && (
+          <ContentWrapper>
+            <Title
+              as="h2"
+              className="text-center text-white mb-12 text-3xl lg:text-5xl"
+            >
+              {data.ClaimSection.Claim}
+            </Title>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {data.ClaimSection.Mission?.map((mission) => (
+                <IconCard
+                  key={mission.id}
+                  icon={mission.Icon}
+                  title={mission.Title}
+                  description={mission.Description}
+                />
+              ))}
+            </div>
+          </ContentWrapper>
+        )}
+      </div>
       <ContentWrapper>
         <ContactFormBanner />
       </ContentWrapper>

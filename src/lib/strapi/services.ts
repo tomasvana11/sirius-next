@@ -1,7 +1,7 @@
 // lib/strapi/services.ts
 
 import { strapiRequest } from "./config";
-import type { StrapiResponse, TopBar, Homepage, BlogPage, ProjectsPage, ContactPage, ReferencePage, ClientPage, OnasPage, CareerPage, SocialMedia, CareerBanner, ContactFormData, FormBanner, BlogPost, BlogsResponse, Project, ProjectsResponse } from "./types";
+import type { StrapiResponse, TopBar, Homepage, BlogPage, ProjectsPage, ContactPage, ReferencePage, ClientPage, OnasPage, CareerPage,Career, SocialMedia, CareerBanner, ContactFormData, FormBanner, BlogPost, BlogsResponse, Project, ProjectsResponse, TeamMember, Partner, PartnersResponse, CareerResponse, QuestionsSection } from "./types";
 
 /**
  * Služba pro Top Bar
@@ -297,6 +297,7 @@ export async function getClientPage(): Promise<ClientPage> {
   const response = await strapiRequest<StrapiResponse<ClientPage>>("client", {
     populate: {
       "populate[HeroBanner][populate][heroBannerButton][populate]": "*",
+      "populate[ClaimSection][populate][Mission][populate]": "*",
     },
   });
   return response.data;
@@ -307,6 +308,8 @@ export async function getOnasPage(): Promise<OnasPage> {
   const response = await strapiRequest<StrapiResponse<OnasPage>>("about", {
     populate: {
       "populate[HeroBanner][populate][heroBannerButton][populate]": "*",
+      "populate[valuesSection][populate][Value][populate]": "*",
+      "populate[videoSection]": "*",
     },
   });
   return response.data;
@@ -316,6 +319,9 @@ export async function getCareerPage(): Promise<CareerPage> {
   const response = await strapiRequest<StrapiResponse<CareerPage>>("career", {
     populate: {
       "populate[HeroBanner][populate][heroBannerButton][populate]": "*",
+      "populate[ValuesSection][populate][Value][populate]": "*",
+      "populate[DayInSirius]": "*",
+      "populate[careerAdvantages][populate][cardsAdvantages][populate]": "*",
     },
   });
   return response.data;
@@ -349,5 +355,118 @@ export async function getProjects(limit?: number | "all"): Promise<Project[]> {
   } catch (error) {
     console.error("Failed to fetch projects:", error);
     return [];
+  }
+}
+
+/**
+ * Služba pro získání členů týmu
+ */
+export async function getTeamMembers(limit?: number | "all"): Promise<TeamMember[]> {
+  try {
+    const params: {
+      sort: string[];
+      populate: string[];
+      pagination?: { limit: number };
+    } = {
+      sort: ["publishedAt:desc"],
+      populate: ["Photo"],
+    };
+
+    if (limit !== "all" && limit) {
+      params.pagination = { limit };
+    }
+
+    const response = await strapiRequest<{ data: TeamMember[] }>(
+      "team-members",
+      params
+    );
+
+    return response.data || [];
+  } catch (error) {
+    console.error("Failed to fetch team members:", error);
+    return [];
+  }
+}
+
+/**
+ * Služba pro získání partnerů
+ */
+export async function getPartners(limit?: number | "all"): Promise<Partner[]> {
+  try {
+    const params: {
+      sort: string[];
+      populate: string[];
+      pagination?: { limit: number };
+    } = {
+      sort: ["publishedAt:desc"],
+      populate: ["Logo"],
+    };
+
+    if (limit !== "all" && limit) {
+      params.pagination = { limit };
+    }
+
+    const response = await strapiRequest<PartnersResponse>(
+      "partners",
+      params
+    );
+
+    return response.data || [];
+  } catch (error) {
+    console.error("Failed to fetch partners:", error);
+    return [];
+  }
+}
+
+/**
+ * Služba pro získání kariérních otázek
+ */
+export async function getCareerQuestions(): Promise<QuestionsSection | null> {
+  try {
+    const params: {
+      sort: string[];
+      populate: string[];
+    } = {
+      sort: ["publishedAt:desc"],
+      populate: ["questionsSection.Question"],
+    };
+
+    const response = await strapiRequest<CareerResponse>(
+      "career",
+      params
+    );
+
+    return response.data?.questionsSection || null;
+  } catch (error) {
+    console.error("Failed to fetch career questions:", error);
+    return null;
+  }
+}
+
+/**
+ * Služba pro získání career page včetně values
+ */
+export async function getCareer(): Promise<Career | null> {
+  try {
+    const params: {
+      sort: string[];
+      populate: string[];
+    } = {
+      sort: ["publishedAt:desc"],
+      populate: [
+        "questionsSection.Question",
+        "ValuesSection.Value.backgroundImage"
+      ],
+    };
+
+    const response = await strapiRequest<CareerResponse>(
+      "career",
+      params
+    );
+
+    return response.data || null;
+  } catch (error) {
+    console.error("Failed to fetch career:", error);
+    return null;
   }
 }

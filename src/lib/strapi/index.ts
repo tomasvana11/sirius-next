@@ -24,7 +24,17 @@ export type {
   BlogsResponse,
   StrapiImage,
   StrapiImageFormat,
-  Project,ProjectsResponse, TeamMember
+  Project,ProjectsResponse, TeamMember,
+  Partner,
+  PartnersResponse,
+  Career, CareerResponse, QuestionsSection, CareerQuestion,
+  ValueCard,
+  ValuesSection,
+  VideoSection,
+  DayInSirius,
+  ClaimSection,
+  CareerAdvantages, CareerAdvantage,
+  
 } from "./types";
 
 export {
@@ -46,7 +56,12 @@ export {
   getFormBanner,
   getBlogs,
   getBlogBySlug,
-  getProjects
+  getProjects,
+  getTeamMembers,
+  getPartners,
+  getCareerQuestions,
+  getCareer,
+  
 } from "./services";
 
 // Utility funkce

@@ -1,6 +1,5 @@
 import React from "react";
 import { Title } from "@/components/Title";
-import { ButtonLink } from "@/components/ButtonLink";
 import { ProjectsList } from "../ProjectsList";
 
 export const FeaturedProjects = () => {

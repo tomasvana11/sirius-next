@@ -323,6 +323,7 @@ export interface ClientPage {
       isExternal: boolean;
     };
   };
+  ClaimSection?: ClaimSection;
 }
 
 export interface OnasPage {
@@ -340,6 +341,8 @@ export interface OnasPage {
       isExternal: boolean;
     };
   };
+  valuesSection?: ValuesSection;
+  videoSection?: VideoSection;
 }
 
 export interface CareerPage {
@@ -357,6 +360,9 @@ export interface CareerPage {
       isExternal: boolean;
     };
   };
+  ValuesSection?: ValuesSection;
+  DayInSirius?: DayInSirius;
+  careerAdvantages?: CareerAdvantages;
 }
 
 /**
@@ -397,5 +403,121 @@ export interface ProjectsResponse {
       limit: number;
       total: number;
     };
+  };
+}
+
+/**
+ * Partner typy
+ */
+export interface Partner {
+  id: number;
+  documentId: string;
+  Title: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  Logo?: StrapiImage[];
+}
+
+export interface PartnersResponse {
+  data: Partner[];
+  meta: {
+    pagination: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
+}
+
+
+/**
+ * Career Questions typy
+ */
+export interface CareerQuestion {
+  id: number;
+  Question: string;
+  Answer: RichTextNode[];
+}
+
+export interface QuestionsSection {
+  id: number;
+  Title: string;
+  Description?: string | null;
+  Question: CareerQuestion[];
+}
+
+export interface Career {
+  id: number;
+  documentId: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  questionsSection: QuestionsSection;
+  ValuesSection?: ValuesSection;
+}
+
+export interface CareerResponse {
+  data: Career;
+  meta: Record<string, unknown>;
+}
+
+/**
+ * Value Card typy
+ */
+export interface ValueCard {
+  id: number;
+  Title: string;
+  Detail: string;
+  backgroundImage?: StrapiImage | null; 
+}
+
+export interface ValuesSection {
+  id: number;
+  Title: string;
+  Value: ValueCard[];
+}
+
+export interface VideoSection {
+  id: number;
+  Title: string;
+  Description: string;
+  Video: string;
+}
+
+export interface DayInSirius {
+  id: number;
+  Title: string;
+  Description: string;
+  Video: string;
+}
+
+export interface ClaimSection {
+  id: number;
+  Claim: string;
+  Mission?: Array<{
+    id: number;
+    Icon: string;
+    Title: string;
+    Description: string;
+  }>;
+}
+
+export interface CareerAdvantage {
+  id: number;
+  Icon: string;
+  Title: string;
+  Description: string;
+}
+
+export interface CareerAdvantages {
+  id: number;
+  Title: string;
+  Description: string;
+  Video: string;
+  cardsAdvantages?: {
+    id: number;
+    Advantage: CareerAdvantage[];
   };
 }
