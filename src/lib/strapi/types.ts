@@ -54,7 +54,9 @@ export interface StrapiResponse<T> {
       Description: string;
       heroBannerButton?: {
         id: number;
+        displayText: string;
         Url: string;
+        Page: string;
         isExternal: boolean;
       };
     };
@@ -107,6 +109,29 @@ export interface StrapiResponse<T> {
         Title: string;
         Description: string;
       }>;
+    };
+  }
+
+  /**
+   * Blogpage typy
+   */
+  export interface BlogPage {
+    id: number;
+    documentId: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    HeroBanner: {
+      id: number;
+      Title: string;
+      Description: string;
+      heroBannerButton?: {
+        id: number;
+        displayText: string;
+        Url: string;
+        Page: string;
+        isExternal: boolean;
+      };
     };
   }
 

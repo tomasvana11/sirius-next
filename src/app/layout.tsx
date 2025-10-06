@@ -3,8 +3,10 @@ import type { Metadata } from "next";
 import { Inter, Nunito } from "next/font/google";
 import "./globals.css";
 import Icon from "@/components/Icon";
+import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { getTopBar, renderRichText } from "@/lib/strapi";
+import { ContentWrapper } from "@/components/ContentWrapper";
 
 // Inicializace Inter fontu
 const inter = Inter({
@@ -38,32 +40,39 @@ export default async function RootLayout({
         {/* Top Bar */}
         {topBar && (
           <div className="bg-[#EC4C19] text-white p-4">
-            <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-              {/* Message - Rich Text */}
-              <div className="text-[15px] text-center md:text-left">
-                {renderRichText(topBar.Message)}
-              </div>
-
-              {/* Links */}
-              {topBar.Links && topBar.Links.length > 0 && (
-                <div className="flex gap-4 items-center">
-                  {topBar.Links.map((link) => (
-                    <a
-                      key={link.id}
-                      href={link.Url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[15px] hover:text-white/80 transition-colors flex items-center gap-2"
-                    >
-                      <Icon name={link.Icon} size="S" className="text-white" />
-                      {link.Label}
-                    </a>
-                  ))}
+            <ContentWrapper>
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                {/* Message - Rich Text */}
+                <div className="text-[15px] text-center md:text-left">
+                  {renderRichText(topBar.Message)}
                 </div>
-              )}
-            </div>
+
+                {/* Links */}
+                {topBar.Links && topBar.Links.length > 0 && (
+                  <div className="flex gap-4 items-center">
+                    {topBar.Links.map((link) => (
+                      <a
+                        key={link.id}
+                        href={link.Url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[15px] hover:text-white/80 transition-colors flex items-center gap-2"
+                      >
+                        <Icon
+                          name={link.Icon}
+                          size="S"
+                          className="text-white"
+                        />
+                        {link.Label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </ContentWrapper>
           </div>
         )}
+        <Navbar />
         {/* Hlavní obsah stránky */}
         <main>{children}</main>
         <Footer />

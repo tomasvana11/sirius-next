@@ -15,27 +15,12 @@ export default async function HomePage() {
         title={homepage.HeroBanner.Title}
         description={homepage.HeroBanner.Description}
         backgroundImage="homepage.webp"
-        buttonText={homepage.HeroBanner.Title}
-        buttonUrl={homepage.HeroBanner.Title}
+        buttonText={homepage.HeroBanner.heroBannerButton?.displayText}
+        buttonUrl={homepage.HeroBanner.heroBannerButton?.Url}
+        buttonPage={homepage.HeroBanner.heroBannerButton?.Page}
+        buttonIsExternal={homepage.HeroBanner.heroBannerButton?.isExternal}
+        type="hero"
       />
-
-      <ContentWrapper>
-        <h1>Obsah</h1>
-      </ContentWrapper>
-      <h1>Hero Banner</h1>
-      <p>Title: {homepage.HeroBanner.Title}</p>
-      <p>Description: {homepage.HeroBanner.Description}</p>
-      {homepage.HeroBanner.heroBannerButton && (
-        <p>Button URL: {homepage.HeroBanner.heroBannerButton.Url}</p>
-      )}
-
-      <h1>Numbers</h1>
-      {homepage.Numbers.Number.map((item) => (
-        <div key={item.id}>
-          <p>Number: {item.Number[0]?.children[0]?.text}</p>
-          <p>Description: {item.Description}</p>
-        </div>
-      ))}
 
       <h1>Mission Claim</h1>
       <p>{homepage.MissionClaim.Claim}</p>

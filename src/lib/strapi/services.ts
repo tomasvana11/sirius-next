@@ -1,7 +1,7 @@
 // lib/strapi/services.ts
 
 import { strapiRequest } from "./config";
-import type { StrapiResponse, TopBar, Homepage, SocialMedia, CareerBanner, ContactFormData, FormBanner, BlogPost, BlogsResponse } from "./types";
+import type { StrapiResponse, TopBar, Homepage, BlogPage, SocialMedia, CareerBanner, ContactFormData, FormBanner, BlogPost, BlogsResponse } from "./types";
 
 /**
  * Služba pro Top Bar
@@ -17,25 +17,34 @@ export async function getTopBar(): Promise<TopBar | null> {
     return null;
   }
 }
-
 /**
  * Služba pro Homepage
  */
 export async function getHomepage(): Promise<Homepage> {
-  const response = await strapiRequest<StrapiResponse<Homepage>>("homepage", {
-    populate: {
-      "populate[HeroBanner][populate]": "*",
-      "populate[Numbers][populate][Number][populate]": "*",
-      "populate[appAdvantages][populate]": "*",
-      "populate[MissionClaim][populate][Mission][populate]": "*",
-      "populate[Facts][populate]": "*",
-      "populate[Steps][populate][Step][populate]": "*",
-      "populate[Checks][populate][checkItem][populate]": "*",
-    },
-  });
-  return response.data;
-}
-
+    const response = await strapiRequest<StrapiResponse<Homepage>>("homepage", {
+      populate: {
+        "populate[HeroBanner][populate][heroBannerButton][populate]": "*",
+        "populate[Numbers][populate][Number][populate]": "*",
+        "populate[appAdvantages][populate]": "*",
+        "populate[MissionClaim][populate][Mission][populate]": "*",
+        "populate[Facts][populate]": "*",
+        "populate[Steps][populate][Step][populate][Icon][populate]": "*",
+        "populate[Checks][populate][checkItem][populate]": "*",
+      },
+    });
+    return response.data;
+  }
+  /**
+ * Služba pro Blogpage
+ */
+export async function getBlogPage(): Promise<BlogPage> {
+    const response = await strapiRequest<StrapiResponse<BlogPage>>("blogpage", {
+      populate: {
+        "populate[HeroBanner][populate][heroBannerButton][populate]": "*",
+      },
+    });
+    return response.data;
+  }
 /**
  * Typ pro blog post response
  */

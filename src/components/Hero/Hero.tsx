@@ -12,12 +12,34 @@ export const Hero: React.FC<HeroProps> = ({
   backgroundImage,
   buttonText,
   buttonUrl,
-  buttonIsExternal = false,
+  buttonPage,
+  buttonIsExternal,
+  type = "default",
 }) => {
-  const showButton = buttonText && buttonUrl;
+  const createSlug = (text: string): string => {
+    return text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  };
+
+  let finalButtonUrl: string | null = null;
+  if (buttonIsExternal === true && buttonUrl) {
+    finalButtonUrl = buttonUrl;
+  } else if (buttonIsExternal === false && buttonPage) {
+    if (buttonPage.toLowerCase() === "homepage") {
+      finalButtonUrl = "/";
+    } else {
+      finalButtonUrl = `/${createSlug(buttonPage)}`;
+    }
+  }
+
+  const showButton = buttonText && finalButtonUrl;
 
   return (
-    <section className="relative py-40 flex items-center">
+    <section className="relative py-20 flex items-center">
       {/* Background Image */}
       <Image
         src={`/img/${backgroundImage}`}
@@ -28,23 +50,55 @@ export const Hero: React.FC<HeroProps> = ({
         quality={90}
       />
 
-      {/* Gradient Overlay - černá zleva do průhledné zprava */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent" />
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/85 to-golden-gate/20" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-golden-gate/05 lg:hidden" />
 
       {/* Content */}
       <ContentWrapper className="relative z-10 items-start">
-        <div className="w-full text-white space-y-6">
-          <Title as="h1">{title}</Title>
+        <div className="w-full text-white space-y-6 md:space-y-8 max-w-lg">
+          <Title as="h1" className="leading-tight">
+            {title}
+          </Title>
 
-          {showButton && (
-            <div className="pt-4">
-              <ButtonLink href={buttonUrl} variant="primary">
-                {buttonText}
-              </ButtonLink>
-            </div>
+          {/* Default: description pod title */}
+          {type === "default" && description && (
+            <p className="text-white">{description}</p>
+          )}
+
+          {showButton && finalButtonUrl && (
+            <ButtonLink
+              href={finalButtonUrl}
+              variant="primary"
+              className="mt-3 md:mt-4"
+            >
+              {buttonText}
+            </ButtonLink>
           )}
         </div>
-        {description && <p className="mt-6 text-white/80">{description}</p>}
+
+        {/* Hero type: hvězdičky a description níže */}
+        {type === "hero" && description && (
+          <>
+            <div className="flex items-center gap-3 pt-12">
+              <Image
+                src="/icons/system/stars.svg"
+                alt={title}
+                width={160}
+                height={32}
+                className="object-cover w-auto h-7 md:h-8"
+                priority
+                quality={90}
+              />
+              <Title as="h6" className="text-white max-w-xs text-md md:text-lg">
+                4.8 / 5
+              </Title>
+            </div>
+            <Title as="h6" className="pt-4 text-white max-w-xs !text-base">
+              {description}
+            </Title>
+          </>
+        )}
       </ContentWrapper>
     </section>
   );

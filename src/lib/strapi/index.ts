@@ -5,6 +5,7 @@ export type {
   RichTextNode,
   TopBar,
   Homepage,
+  BlogPage,
   SocialMedia,
   SocialMediaLink,
   SocialMediaPlatform,
@@ -22,6 +23,7 @@ export type {
 export {
   getTopBar,
   getHomepage,
+  getBlogPage,
   getBlogPosts,
   getBlogPost,
   getAboutPage,
