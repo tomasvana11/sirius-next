@@ -1,7 +1,7 @@
 // lib/strapi/services.ts
 
 import { strapiRequest } from "./config";
-import type { StrapiResponse, TopBar, Homepage, BlogPage, SocialMedia, CareerBanner, ContactFormData, FormBanner, BlogPost, BlogsResponse } from "./types";
+import type { StrapiResponse, TopBar, Homepage, BlogPage, ProjectsPage, SocialMedia, CareerBanner, ContactFormData, FormBanner, BlogPost, BlogsResponse } from "./types";
 
 /**
  * Služba pro Top Bar
@@ -39,6 +39,17 @@ export async function getHomepage(): Promise<Homepage> {
  */
 export async function getBlogPage(): Promise<BlogPage> {
     const response = await strapiRequest<StrapiResponse<BlogPage>>("blogpage", {
+      populate: {
+        "populate[HeroBanner][populate][heroBannerButton][populate]": "*",
+      },
+    });
+    return response.data;
+  }
+   /**
+ * Služba pro Projekty
+ */
+export async function getProjectsPage(): Promise<ProjectsPage> {
+    const response = await strapiRequest<StrapiResponse<ProjectsPage>>("projekty", {
       populate: {
         "populate[HeroBanner][populate][heroBannerButton][populate]": "*",
       },

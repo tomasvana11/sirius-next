@@ -56,7 +56,11 @@ export const Hero: React.FC<HeroProps> = ({
 
       {/* Content */}
       <ContentWrapper className="relative z-10 items-start">
-        <div className="w-full text-white space-y-6 md:space-y-8 max-w-lg">
+        <div
+          className={`w-full text-white space-y-6 md:space-y-8 ${
+            type === "hero" ? "max-w-lg" : "max-w-4xl"
+          }`}
+        >
           <Title as="h1" className="leading-tight">
             {title}
           </Title>

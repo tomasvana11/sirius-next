@@ -6,17 +6,17 @@ import { ContactFormBanner } from "@/components/ContactFormBanner";
 import { Hero } from "@/components/Hero";
 
 export default async function BlogPage() {
-  const homepage = await getBlogPage();
+  const data = await getBlogPage();
   return (
     <>
       <Hero
-        title={homepage.HeroBanner.Title}
-        description={homepage.HeroBanner.Description}
+        title={data.HeroBanner.Title}
+        description={data.HeroBanner.Description}
         backgroundImage="homepage.webp"
-        buttonText={homepage.HeroBanner.heroBannerButton?.displayText}
-        buttonUrl={homepage.HeroBanner.heroBannerButton?.Url}
-        buttonPage={homepage.HeroBanner.heroBannerButton?.Page}
-        buttonIsExternal={homepage.HeroBanner.heroBannerButton?.isExternal}
+        buttonText={data.HeroBanner.heroBannerButton?.displayText}
+        buttonUrl={data.HeroBanner.heroBannerButton?.Url}
+        buttonPage={data.HeroBanner.heroBannerButton?.Page}
+        buttonIsExternal={data.HeroBanner.heroBannerButton?.isExternal}
         type="default"
       />
       <ContentWrapper>

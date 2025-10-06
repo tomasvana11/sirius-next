@@ -134,6 +134,25 @@ export interface StrapiResponse<T> {
       };
     };
   }
+  /**
+   * Blogpage typy
+   */
+  export interface ProjectsPage {
+    id: number;
+    documentId: string;
+    HeroBanner: {
+      id: number;
+      Title: string;
+      Description: string;
+      heroBannerButton?: {
+        id: number;
+        displayText: string;
+        Url: string;
+        Page: string;
+        isExternal: boolean;
+      };
+    };
+  }
 
   /**
  * Social Media typy
