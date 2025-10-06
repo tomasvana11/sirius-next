@@ -51,14 +51,14 @@ export const Hero: React.FC<HeroProps> = ({
       />
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/85 to-golden-gate/20" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-golden-gate/05 lg:hidden" />
 
       {/* Content */}
       <ContentWrapper className="relative z-10 items-start">
         <div
           className={`w-full text-white space-y-6 md:space-y-8 ${
-            type === "hero" ? "max-w-lg" : "max-w-4xl"
+            type === "hero" ? "max-w-lg" : "max-w-[1000px]"
           }`}
         >
           <Title as="h1" className="leading-tight">
@@ -67,7 +67,7 @@ export const Hero: React.FC<HeroProps> = ({
 
           {/* Default: description pod title */}
           {type === "default" && description && (
-            <p className="text-white">{description}</p>
+            <p className="text-white max-w-lg">{description}</p>
           )}
 
           {showButton && finalButtonUrl && (

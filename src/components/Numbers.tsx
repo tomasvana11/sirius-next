@@ -39,7 +39,7 @@ export const Numbers: React.FC<NumbersProps> = ({ numbers }) => {
             <div key={item.id} className="text-left space-y-2">
               <Title
                 as="h3"
-                className="text-[36px] md:!text-[48px] font-bold leading-none"
+                className="text-[28px] md:!text-[32px] font-bold leading-none"
               >
                 <span className="text-neutral-800">{first}</span>
                 {rest && <span className="text-golden-gate"> {rest}</span>}

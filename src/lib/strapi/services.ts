@@ -1,7 +1,7 @@
 // lib/strapi/services.ts
 
 import { strapiRequest } from "./config";
-import type { StrapiResponse, TopBar, Homepage, BlogPage, ProjectsPage, SocialMedia, CareerBanner, ContactFormData, FormBanner, BlogPost, BlogsResponse } from "./types";
+import type { StrapiResponse, TopBar, Homepage, BlogPage, ProjectsPage, ContactPage, ReferencePage, ClientPage, OnasPage, CareerPage, SocialMedia, CareerBanner, ContactFormData, FormBanner, BlogPost, BlogsResponse, Project, ProjectsResponse } from "./types";
 
 /**
  * Služba pro Top Bar
@@ -272,5 +272,82 @@ export async function getBlogBySlug(slug: string): Promise<BlogPost | null> {
   } catch (error) {
     console.error("Failed to fetch blog:", error);
     return null;
+  }
+}
+
+export async function getContactPage(): Promise<ContactPage> {
+  const response = await strapiRequest<StrapiResponse<ContactPage>>("kontakty", {
+    populate: {
+      "populate[HeroBanner][populate][heroBannerButton][populate]": "*",
+    },
+  });
+  return response.data;
+}
+
+export async function getReferencePage(): Promise<ReferencePage> {
+  const response = await strapiRequest<StrapiResponse<ReferencePage>>("reference", {
+    populate: {
+      "populate[HeroBanner][populate][heroBannerButton][populate]": "*",
+    },
+  });
+  return response.data;
+}
+
+export async function getClientPage(): Promise<ClientPage> {
+  const response = await strapiRequest<StrapiResponse<ClientPage>>("client", {
+    populate: {
+      "populate[HeroBanner][populate][heroBannerButton][populate]": "*",
+    },
+  });
+  return response.data;
+}
+
+
+export async function getOnasPage(): Promise<OnasPage> {
+  const response = await strapiRequest<StrapiResponse<OnasPage>>("about", {
+    populate: {
+      "populate[HeroBanner][populate][heroBannerButton][populate]": "*",
+    },
+  });
+  return response.data;
+}
+
+export async function getCareerPage(): Promise<CareerPage> {
+  const response = await strapiRequest<StrapiResponse<CareerPage>>("career", {
+    populate: {
+      "populate[HeroBanner][populate][heroBannerButton][populate]": "*",
+    },
+  });
+  return response.data;
+}
+
+
+/**
+ * Služba pro získání projektů
+ */
+export async function getProjects(limit?: number | "all"): Promise<Project[]> {
+  try {
+    const params: {
+      sort: string[];
+      populate: string[];
+      pagination?: { limit: number };
+    } = {
+      sort: ["publishedAt:desc"],
+      populate: ["coverImage", "clenove_tymu.Photo"],
+    };
+
+    if (limit !== "all" && limit) {
+      params.pagination = { limit };
+    }
+
+    const response = await strapiRequest<ProjectsResponse>(
+      "projects",
+      params
+    );
+
+    return response.data || [];
+  } catch (error) {
+    console.error("Failed to fetch projects:", error);
+    return [];
   }
 }

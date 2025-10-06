@@ -271,3 +271,131 @@ export interface BlogsResponse {
     };
   };
 }
+
+// pageTypes.ts
+
+export interface ContactPage {
+  id: number;
+  documentId: string;
+  HeroBanner: {
+    id: number;
+    Title: string;
+    Description: string;
+    heroBannerButton?: {
+      id: number;
+      displayText: string;
+      Url: string;
+      Page: string;
+      isExternal: boolean;
+    };
+  };
+}
+
+export interface ReferencePage {
+  id: number;
+  documentId: string;
+  HeroBanner: {
+    id: number;
+    Title: string;
+    Description: string;
+    heroBannerButton?: {
+      id: number;
+      displayText: string;
+      Url: string;
+      Page: string;
+      isExternal: boolean;
+    };
+  };
+}
+
+export interface ClientPage {
+  id: number;
+  documentId: string;
+  HeroBanner: {
+    id: number;
+    Title: string;
+    Description: string;
+    heroBannerButton?: {
+      id: number;
+      displayText: string;
+      Url: string;
+      Page: string;
+      isExternal: boolean;
+    };
+  };
+}
+
+export interface OnasPage {
+  id: number;
+  documentId: string;
+  HeroBanner: {
+    id: number;
+    Title: string;
+    Description: string;
+    heroBannerButton?: {
+      id: number;
+      displayText: string;
+      Url: string;
+      Page: string;
+      isExternal: boolean;
+    };
+  };
+}
+
+export interface CareerPage {
+  id: number;
+  documentId: string;
+  HeroBanner: {
+    id: number;
+    Title: string;
+    Description: string;
+    heroBannerButton?: {
+      id: number;
+      displayText: string;
+      Url: string;
+      Page: string;
+      isExternal: boolean;
+    };
+  };
+}
+
+/**
+ * TeamMember typy
+ */
+export interface TeamMember {
+  id: number;
+  documentId: string;
+  Name: string;
+  Position: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  Photo?: StrapiImage[];
+}
+
+/**
+ * Project typy
+ */
+export interface Project {
+  id: number;
+  documentId: string;
+  Name: string;
+  Description: string;
+  Link: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  coverImage?: StrapiImage[];
+  clenove_tymu?: TeamMember;  // Jeden člen týmu (ne array, protože je to 1:1 relace)
+}
+
+export interface ProjectsResponse {
+  data: Project[];
+  meta: {
+    pagination: {
+      start: number;
+      limit: number;
+      total: number;
+    };
+  };
+}

@@ -1,11 +1,12 @@
 import { getHomepage } from "@/lib/strapi";
 import { ContentWrapper } from "@/components/ContentWrapper";
-import { Title } from "@/components/Title";
 import { CareerBanner } from "@/components/CareerBanner";
 import { ContactFormBanner } from "@/components/ContactFormBanner";
 import { FeaturedBlog } from "@/components/FeaturedBlog";
 import { Numbers } from "@/components/Numbers";
 import { Hero } from "@/components/Hero";
+import { FeaturedProjects } from "@/components/FeaturedProjects";
+
 export default async function HomePage() {
   const homepage = await getHomepage();
 
@@ -52,6 +53,7 @@ export default async function HomePage() {
       ))}
       <ContentWrapper>
         <Numbers numbers={homepage.Numbers.Number} />
+        <FeaturedProjects />
         <CareerBanner />
         <FeaturedBlog />
         <ContactFormBanner />

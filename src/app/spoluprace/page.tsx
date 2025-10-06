@@ -1,53 +1,27 @@
-"use client";
+import { getClientPage } from "@/lib/strapi";
+import { ContentWrapper } from "@/components/ContentWrapper";
+import { CareerBanner } from "@/components/CareerBanner";
+import { FeaturedBlog } from "@/components/FeaturedBlog";
+import { ContactFormBanner } from "@/components/ContactFormBanner";
+import { Hero } from "@/components/Hero";
 
-import Image from "next/image";
-
-export default function Custom404() {
+export default async function ClientPage() {
+  const data = await getClientPage();
   return (
-    <div
-      style={{
-        backgroundColor: "white",
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      {/* Obrázek uprostřed */}
-      <Image
-        src="/logo_sirius.svg" // nahraď cestou k tvému obrázku
-        alt="Logo"
-        width={80}
-        height={80}
+    <>
+      <Hero
+        title={data.HeroBanner.Title}
+        description={data.HeroBanner.Description}
+        backgroundImage="homepage.webp"
+        buttonText={data.HeroBanner.heroBannerButton?.displayText}
+        buttonUrl={data.HeroBanner.heroBannerButton?.Url}
+        buttonPage={data.HeroBanner.heroBannerButton?.Page}
+        buttonIsExternal={data.HeroBanner.heroBannerButton?.isExternal}
+        type="default"
       />
-
-      {/* Loader */}
-      <div className="flex flex-row gap-4 items-center mt-5">
-        <div
-          style={{
-            width: "30px",
-            height: "30px",
-            border: "4px solid #ddd",
-            borderTop: "4px solid black",
-            borderRadius: "50%",
-            animation: "spin 1s linear infinite",
-          }}
-        />
-        <span className="text-black/85">Načítání</span>
-      </div>
-
-      {/* Definice animace */}
-      <style jsx>{`
-        @keyframes spin {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-      `}</style>
-    </div>
+      <ContentWrapper>
+        <ContactFormBanner />
+      </ContentWrapper>
+    </>
   );
 }

@@ -22,9 +22,6 @@ const getSocialIcon = (platform: SocialMediaPlatform): string => {
 export const Footer = async () => {
   const socialMedia = await getSocialMedia();
 
-  // Debug - vypiš data do konzole
-  console.log("Social Media Data:", JSON.stringify(socialMedia, null, 2));
-
   return (
     <footer>
       <ContentWrapper>

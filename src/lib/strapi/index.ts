@@ -6,6 +6,11 @@ export type {
   TopBar,
   Homepage,
   BlogPage,
+  ContactPage,
+  ReferencePage,
+  ClientPage,
+  OnasPage,
+  CareerPage,
   ProjectsPage,
   SocialMedia,
   SocialMediaLink,
@@ -19,6 +24,7 @@ export type {
   BlogsResponse,
   StrapiImage,
   StrapiImageFormat,
+  Project,ProjectsResponse, TeamMember
 } from "./types";
 
 export {
@@ -26,6 +32,11 @@ export {
   getHomepage,
   getBlogPage,
   getProjectsPage,
+  getContactPage,
+  getReferencePage,
+  getClientPage,
+  getOnasPage,
+  getCareerPage,
   getBlogPosts,
   getBlogPost,
   getAboutPage,
@@ -35,6 +46,7 @@ export {
   getFormBanner,
   getBlogs,
   getBlogBySlug,
+  getProjects
 } from "./services";
 
 // Utility funkce

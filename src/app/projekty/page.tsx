@@ -3,6 +3,7 @@ import { ContentWrapper } from "@/components/ContentWrapper";
 import { CareerBanner } from "@/components/CareerBanner";
 import { FeaturedBlog } from "@/components/FeaturedBlog";
 import { ContactFormBanner } from "@/components/ContactFormBanner";
+import { ProjectsList } from "@/components/ProjectsList";
 import { Hero } from "@/components/Hero";
 
 export default async function ProjectsPage() {
@@ -20,6 +21,7 @@ export default async function ProjectsPage() {
         type="default"
       />
       <ContentWrapper>
+        <ProjectsList limit="all" className="py-10 lg:py-14" />
         <CareerBanner />
         <FeaturedBlog />
         <ContactFormBanner />
