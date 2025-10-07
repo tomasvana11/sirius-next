@@ -83,6 +83,7 @@ export interface StrapiResponse<T> {
     Steps: {
       id: number;
       Title: string;
+      additionalDescription?: RichTextNode[];
       Step: Array<{
         id: number;
         Title: string;
@@ -92,6 +93,13 @@ export interface StrapiResponse<T> {
           Icon: string;
         };
       }>;
+      button?: {  // Přidáno
+        id: number;
+        Url: string | null;
+        isExternal: boolean;
+        displayText: string;
+        Page: string;
+      };
     };
     Checks: {
       id: number;
@@ -324,6 +332,7 @@ export interface ClientPage {
     };
   };
   ClaimSection?: ClaimSection;
+  servicesSesction?: ServicesSesction;
 }
 
 export interface OnasPage {
@@ -519,5 +528,47 @@ export interface CareerAdvantages {
   cardsAdvantages?: {
     id: number;
     Advantage: CareerAdvantage[];
+  };
+}
+
+export interface ServiceItem {
+  id: number;
+  Title: string;
+  Icons: {
+    id: number;
+    Icon: string;
+  };
+}
+
+export interface ServicesSesction {
+  id: number;
+  Title: string;
+  Description: string;
+  Service: ServiceItem[];
+}
+
+/**
+ * Text Reference typy
+ */
+export interface TextReference {
+  id: number;
+  documentId: string;
+  Review: RichTextNode[];
+  Name: string;
+  yearsBeingClient: number;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+export interface TextReferencesResponse {
+  data: TextReference[];
+  meta: {
+    pagination: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
   };
 }

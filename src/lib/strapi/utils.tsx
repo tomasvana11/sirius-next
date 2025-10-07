@@ -62,7 +62,7 @@ export function renderRichText(nodes: RichTextNode[]): React.ReactElement[] {
 
       if (node.type === "paragraph") {
         return (
-          <p key={index} className="inline">
+          <p key={index} className="mb-4">
             {node.children && renderRichText(node.children)}
           </p>
         );

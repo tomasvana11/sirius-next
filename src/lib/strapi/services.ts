@@ -1,7 +1,7 @@
 // lib/strapi/services.ts
 
 import { strapiRequest } from "./config";
-import type { StrapiResponse, TopBar, Homepage, BlogPage, ProjectsPage, ContactPage, ReferencePage, ClientPage, OnasPage, CareerPage,Career, SocialMedia, CareerBanner, ContactFormData, FormBanner, BlogPost, BlogsResponse, Project, ProjectsResponse, TeamMember, Partner, PartnersResponse, CareerResponse, QuestionsSection } from "./types";
+import type { StrapiResponse, TopBar, Homepage, BlogPage, ProjectsPage, ContactPage, ReferencePage, ClientPage, OnasPage, CareerPage,Career, SocialMedia, CareerBanner, ContactFormData, FormBanner, BlogPost, BlogsResponse, Project, ProjectsResponse, TeamMember, Partner, PartnersResponse, CareerResponse, QuestionsSection, TextReferencesResponse, TextReference } from "./types";
 
 /**
  * Služba pro Top Bar
@@ -30,6 +30,7 @@ export async function getHomepage(): Promise<Homepage> {
         "populate[Facts][populate]": "*",
         "populate[Steps][populate][Step][populate][Icon][populate]": "*",
         "populate[Checks][populate][checkItem][populate]": "*",
+        "populate[Steps][populate][button][populate]": "*",
       },
     });
     return response.data;
@@ -298,6 +299,7 @@ export async function getClientPage(): Promise<ClientPage> {
     populate: {
       "populate[HeroBanner][populate][heroBannerButton][populate]": "*",
       "populate[ClaimSection][populate][Mission][populate]": "*",
+      "populate[servicesSesction][populate][Service][populate]": "*",
     },
   });
   return response.data;
@@ -468,5 +470,33 @@ export async function getCareer(): Promise<Career | null> {
   } catch (error) {
     console.error("Failed to fetch career:", error);
     return null;
+  }
+}
+
+/**
+ * Služba pro získání referencí
+ */
+export async function getTextReferences(limit?: number | "all"): Promise<TextReference[]> {
+  try {
+    const params: {
+      sort: string[];
+      pagination?: { limit: number };
+    } = {
+      sort: ["publishedAt:desc"],
+    };
+
+    if (limit !== "all" && limit) {
+      params.pagination = { limit };
+    }
+
+    const response = await strapiRequest<TextReferencesResponse>(
+      "text-references",
+      params
+    );
+
+    return response.data || [];
+  } catch (error) {
+    console.error("Failed to fetch text references:", error);
+    return [];
   }
 }

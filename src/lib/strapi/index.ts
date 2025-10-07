@@ -34,6 +34,8 @@ export type {
   DayInSirius,
   ClaimSection,
   CareerAdvantages, CareerAdvantage,
+  ServicesSesction, ServiceItem,
+  TextReference, TextReferencesResponse,
   
 } from "./types";
 
@@ -61,7 +63,7 @@ export {
   getPartners,
   getCareerQuestions,
   getCareer,
-  
+  getTextReferences,
 } from "./services";
 
 // Utility funkce

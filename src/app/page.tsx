@@ -8,6 +8,8 @@ import { Hero } from "@/components/Hero";
 import { FeaturedProjects } from "@/components/FeaturedProjects";
 import { IconCard } from "@/components/IconCard";
 import { Title } from "@/components/Title";
+import { FeaturedTestimonials } from "@/components/FeaturedTestimonials";
+import { StepsSection } from "@/components/StepsSection";
 
 export default async function HomePage() {
   const homepage = await getHomepage();
@@ -47,6 +49,7 @@ export default async function HomePage() {
                 />
               ))}
             </div>
+            <StepsSection stepsData={homepage.Steps} />
           </ContentWrapper>
         )}
       </div>
@@ -55,21 +58,12 @@ export default async function HomePage() {
       <p>Title: {homepage.appAdvantages.Title}</p>
       <p>Description: {homepage.appAdvantages.Description}</p>
 
-      <h1>Steps</h1>
-      <p>{homepage.Steps.Title}</p>
-      {homepage.Steps.Step.map((step) => (
-        <div key={step.id}>
-          <p>Icon: {step.Icon?.Icon}</p>
-          <p>Title: {step.Title}</p>
-          <p>Description: {step.Description}</p>
-        </div>
-      ))}
-
       <h1>Checks</h1>
       {homepage.Checks.checkItem.map((check) => (
         <p key={check.id}>{check.Content}</p>
       ))}
       <ContentWrapper>
+        <FeaturedTestimonials />
         <FeaturedProjects />
         <CareerBanner />
         <FeaturedBlog />
