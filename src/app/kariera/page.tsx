@@ -10,9 +10,12 @@ import { Title } from "@/components/Title";
 import { Video } from "@/components/Video";
 import { OnboardingBanner } from "@/components/OnboardingBanner";
 import { IconCard } from "@/components/IconCard";
+import { CareerTimeline } from "@/components/CareerTimeline";
+import { getCareerTimeline } from "@/lib/fetch/strapi";
 
 export default async function CareerPage() {
   const data = await getCareerPage();
+  const careerTimelineData = await getCareerTimeline();
 
   // Mapování dat pro FlipCards
   const valueCards =
@@ -122,6 +125,7 @@ export default async function CareerPage() {
         </div>
       )}
       <ContentWrapper>
+        <CareerTimeline data={careerTimelineData} />
         <FeaturedBlog />
         <ContactFormBanner />
       </ContentWrapper>
