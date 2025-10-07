@@ -29,8 +29,9 @@ export async function getHomepage(): Promise<Homepage> {
         "populate[MissionClaim][populate][Mission][populate]": "*",
         "populate[Facts][populate]": "*",
         "populate[Steps][populate][Step][populate][Icon][populate]": "*",
-        "populate[Checks][populate][checkItem][populate]": "*",
         "populate[Steps][populate][button][populate]": "*",
+        "populate[appBlock][populate]": "*",
+        "populate[reasonCards][populate]": "*",
         
       },
     });

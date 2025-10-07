@@ -74,8 +74,26 @@ export interface StrapiResponse<T> {
     appAdvantages: {
       id: number;
       Title: string;
-      Description: string;
+      personImage?: StrapiImage;
     };
+    appBlock: {
+      id: number;
+      Title: string;
+      appScreenshot?: StrapiImage[];
+      appFeatures?: Array<{
+        id: number;
+        appFeature: string;
+      }>;
+    };
+    reasonCards?: Array<{
+      id: number;
+      Title: string;
+      Description: string;
+      icon: {
+        id: number;
+        Icon: string;
+      };
+    }>;
     Facts: null | {
       id: number;
       fact: Array<{

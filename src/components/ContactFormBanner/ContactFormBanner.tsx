@@ -24,7 +24,7 @@ export const ContactFormBanner = async ({
         style={{
           backgroundImage: "url('/img/contact-banner-pattern.png')",
           backgroundPosition: "bottom left",
-          backgroundSize: "110% auto",
+          backgroundSize: "100% auto",
           backgroundRepeat: "no-repeat",
         }}
       />

@@ -11,6 +11,7 @@ import { Title } from "@/components/Title";
 import { FeaturedTestimonials } from "@/components/FeaturedTestimonials";
 import { StepsSection } from "@/components/StepsSection";
 import { FactsSection } from "@/components/FactsSection";
+import { AppAdvantagesSection } from "@/components/AppAdvantagesSection";
 
 export default async function HomePage() {
   const homepage = await getHomepage();
@@ -29,10 +30,14 @@ export default async function HomePage() {
       />
       <ContentWrapper>
         <Numbers numbers={homepage.Numbers.Number} />
-        <h1>App Advantages</h1>
-        <p>Title: {homepage.appAdvantages.Title}</p>
-        <p>Description: {homepage.appAdvantages.Description}</p>
       </ContentWrapper>
+      {homepage.appAdvantages && homepage.appBlock && (
+        <AppAdvantagesSection
+          appAdvantagesData={homepage.appAdvantages}
+          appBlockData={homepage.appBlock}
+          reasonCardsData={homepage.reasonCards}
+        />
+      )}
       <div className="bg-[#220B03] py-16 lg:py-24 ">
         {homepage.MissionClaim && (
           <ContentWrapper className="pb-100 lg:pb-60">
