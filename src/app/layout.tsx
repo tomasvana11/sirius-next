@@ -43,7 +43,7 @@ export default async function RootLayout({
             <ContentWrapper>
               <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                 {/* Message - Rich Text */}
-                <div className="text-[15px] text-center md:text-left">
+                <div className="text-[15px] text-center md:text-left [&_p]:mb-0 [&_a]:hover:text-white/75 [&_a]:transition-colors [&_a]:duration-200">
                   {renderRichText(topBar.Message)}
                 </div>
 
@@ -56,7 +56,7 @@ export default async function RootLayout({
                         href={link.Url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[15px] hover:text-white/80 transition-colors flex items-center gap-2"
+                        className="text-[15px] hover:text-white/75 transition-colors duration-200 flex items-center gap-2"
                       >
                         <Icon
                           name={link.Icon}

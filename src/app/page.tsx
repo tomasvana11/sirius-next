@@ -31,7 +31,7 @@ export default async function HomePage() {
       </ContentWrapper>
       <div className="bg-[#220B03] py-16 lg:py-24 ">
         {homepage.MissionClaim && (
-          <ContentWrapper>
+          <ContentWrapper className="pb-100 lg:pb-60">
             <Title
               as="h2"
               className="text-center text-white mb-12 text-3xl lg:text-5xl"
@@ -49,10 +49,12 @@ export default async function HomePage() {
                 />
               ))}
             </div>
-            <StepsSection stepsData={homepage.Steps} />
           </ContentWrapper>
         )}
       </div>
+      <ContentWrapper className="-mt-100 lg:-mt-60">
+        <StepsSection stepsData={homepage.Steps} />
+      </ContentWrapper>
 
       <h1>App Advantages</h1>
       <p>Title: {homepage.appAdvantages.Title}</p>

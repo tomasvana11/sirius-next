@@ -14,9 +14,9 @@ export const Title = <T extends HeadingLevel = "h1">({
 
   const headingStyles: Record<HeadingLevel, string> = {
     h1: "text-5xl lg:text-7xl",
-    h2: "text:3xl lg:text-5xl",
+    h2: "text-3xl lg:text-5xl",
     h3: "text-2xl lg:text-3xl",
-    h4: "text-xl",
+    h4: "text-xl lg:text-2xl",
     h5: "text-xl",
     h6: "text-xl",
   };
