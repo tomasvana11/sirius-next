@@ -78,7 +78,12 @@ export interface StrapiResponse<T> {
     };
     Facts: null | {
       id: number;
-      [key: string]: unknown;
+      fact: Array<{
+        id: number;
+        textBefore?: string | null;
+        mainText: string;
+        textAfter?: string | null;
+      }>;
     };
     Steps: {
       id: number;
@@ -118,6 +123,8 @@ export interface StrapiResponse<T> {
         Description: string;
       }>;
     };
+    
+    
   }
 
   /**
@@ -571,4 +578,16 @@ export interface TextReferencesResponse {
       total: number;
     };
   };
+}
+
+export interface Fact {
+  id: number;
+  textBefore?: string | null;
+  mainText: string;
+  textAfter?: string | null;
+}
+
+export interface Facts {
+  id: number;
+  fact: Fact[];
 }

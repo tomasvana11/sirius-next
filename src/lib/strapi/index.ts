@@ -36,6 +36,7 @@ export type {
   CareerAdvantages, CareerAdvantage,
   ServicesSesction, ServiceItem,
   TextReference, TextReferencesResponse,
+  Facts,
   
 } from "./types";
 

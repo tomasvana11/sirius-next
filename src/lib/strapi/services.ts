@@ -31,6 +31,7 @@ export async function getHomepage(): Promise<Homepage> {
         "populate[Steps][populate][Step][populate][Icon][populate]": "*",
         "populate[Checks][populate][checkItem][populate]": "*",
         "populate[Steps][populate][button][populate]": "*",
+        
       },
     });
     return response.data;

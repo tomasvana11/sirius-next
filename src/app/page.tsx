@@ -10,6 +10,7 @@ import { IconCard } from "@/components/IconCard";
 import { Title } from "@/components/Title";
 import { FeaturedTestimonials } from "@/components/FeaturedTestimonials";
 import { StepsSection } from "@/components/StepsSection";
+import { FactsSection } from "@/components/FactsSection";
 
 export default async function HomePage() {
   const homepage = await getHomepage();
@@ -28,6 +29,9 @@ export default async function HomePage() {
       />
       <ContentWrapper>
         <Numbers numbers={homepage.Numbers.Number} />
+        <h1>App Advantages</h1>
+        <p>Title: {homepage.appAdvantages.Title}</p>
+        <p>Description: {homepage.appAdvantages.Description}</p>
       </ContentWrapper>
       <div className="bg-[#220B03] py-16 lg:py-24 ">
         {homepage.MissionClaim && (
@@ -54,16 +58,9 @@ export default async function HomePage() {
       </div>
       <ContentWrapper className="-mt-100 lg:-mt-60">
         <StepsSection stepsData={homepage.Steps} />
+        {homepage.Facts && <FactsSection factsData={homepage.Facts} />}
       </ContentWrapper>
 
-      <h1>App Advantages</h1>
-      <p>Title: {homepage.appAdvantages.Title}</p>
-      <p>Description: {homepage.appAdvantages.Description}</p>
-
-      <h1>Checks</h1>
-      {homepage.Checks.checkItem.map((check) => (
-        <p key={check.id}>{check.Content}</p>
-      ))}
       <ContentWrapper>
         <FeaturedTestimonials />
         <FeaturedProjects />
