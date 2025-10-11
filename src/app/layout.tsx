@@ -36,7 +36,9 @@ export default async function RootLayout({
 
   return (
     <html lang="cs">
-      <body className={`${inter.className} ${nunito.variable} antialiased`}>
+      <body
+        className={`${inter.className} ${nunito.variable} antialiased overflow-x-hidden max-w-full`}
+      >
         {/* Top Bar */}
         {topBar && (
           <div className="bg-[#EC4C19] text-white p-4">

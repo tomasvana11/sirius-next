@@ -1,7 +1,5 @@
 import { getContactPage } from "@/lib/strapi";
 import { ContentWrapper } from "@/components/ContentWrapper";
-import { CareerBanner } from "@/components/CareerBanner";
-import { FeaturedBlog } from "@/components/FeaturedBlog";
 import { ContactFormBanner } from "@/components/ContactFormBanner";
 import { Hero } from "@/components/Hero";
 
