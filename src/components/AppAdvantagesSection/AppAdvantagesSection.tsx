@@ -10,10 +10,7 @@ export const AppAdvantagesSection: React.FC<AppAdvantagesSectionProps> = ({
   appBlockData,
   reasonCardsData,
 }) => {
-  const personImageUrl = appAdvantagesData.personImage?.url
-    ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${appAdvantagesData.personImage.url}`
-    : null;
-
+  const personImageUrl = appAdvantagesData.personImage?.url;
   const appScreenshotUrl = appBlockData.appScreenshot?.[0]?.url
     ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${appBlockData.appScreenshot[0].url}`
     : null;

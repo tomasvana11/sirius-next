@@ -26,20 +26,16 @@ export const BlogList = async ({ limit = 4, className }: BlogListProps) => {
 
   return (
     <section className={cn(className)}>
-      {/* Desktop: 4 sloupce, Tablet: 2 sloupce, Mobile: 1 sloupec */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {blogs.map((blog) => {
           const blogSlug = blog.slug || blog.documentId;
-          const imageUrl = blog.coverImage?.[0]?.url
-            ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${blog.coverImage[0].url}`
-            : null;
+          const imageUrl = blog.coverImage?.[0]?.url;
 
           return (
             <article
               key={blog.id}
               className="group overflow-hidden h-full flex flex-col"
             >
-              {/* Obrázek */}
               <Link href={`/blog/${blogSlug}`} className="block">
                 <div className="relative w-full aspect-[4/2] bg-neutral-200 rounded-xl overflow-hidden mb-3">
                   {imageUrl ? (
@@ -62,9 +58,7 @@ export const BlogList = async ({ limit = 4, className }: BlogListProps) => {
                 </div>
               </Link>
 
-              {/* Obsah */}
               <div className="flex flex-col flex-grow space-y-2">
-                {/* Datum a kategorie */}
                 <div className="text-sm text-neutral-400">
                   {new Date(blog.publishedAt).toLocaleDateString("cs-CZ", {
                     day: "numeric",
@@ -74,7 +68,6 @@ export const BlogList = async ({ limit = 4, className }: BlogListProps) => {
                   • {formatCategory(blog.Category)}
                 </div>
 
-                {/* Titulek */}
                 <Link href={`/blog/${blogSlug}`}>
                   <Title
                     as="h4"
@@ -84,12 +77,10 @@ export const BlogList = async ({ limit = 4, className }: BlogListProps) => {
                   </Title>
                 </Link>
 
-                {/* Excerpt */}
                 <p className="text-neutral-500 text-sm line-clamp-3 flex-grow">
                   {blog.Excerpt}
                 </p>
 
-                {/* ButtonLink */}
                 <div className="pt-2">
                   <ButtonLink
                     href={`/blog/${blogSlug}`}

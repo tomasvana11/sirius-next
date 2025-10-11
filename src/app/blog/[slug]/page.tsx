@@ -32,9 +32,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
     notFound();
   }
 
-  const imageUrl = blog.coverImage?.[0]?.url
-    ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${blog.coverImage[0].url}`
-    : null;
+  const imageUrl = blog.coverImage?.[0]?.url;
 
   return (
     <article>
