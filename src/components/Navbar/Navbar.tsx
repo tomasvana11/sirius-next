@@ -79,6 +79,12 @@ export const Navbar = () => {
               Reference
             </Link>
             <Link
+              href="/blog"
+              className="text-neutral-700 hover:text-[#EC4C19] font-medium"
+            >
+              Blog
+            </Link>
+            <Link
               href="/kontakt"
               className="text-neutral-700 hover:text-[#EC4C19] font-medium"
             >
@@ -135,6 +141,12 @@ export const Navbar = () => {
                     className="text-lg font-medium hover:text-[#EC4C19]"
                   >
                     Reference
+                  </Link>
+                  <Link
+                    href="/blog"
+                    className="text-lg font-medium hover:text-[#EC4C19]"
+                  >
+                    Blog
                   </Link>
                   <Link
                     href="/kontakt"

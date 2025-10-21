@@ -52,6 +52,7 @@ export interface StrapiResponse<T> {
       id: number;
       Title: string;
       Description: string;
+      backgroundImage?: StrapiImage;
       heroBannerButton?: {
         id: number;
         displayText: string;

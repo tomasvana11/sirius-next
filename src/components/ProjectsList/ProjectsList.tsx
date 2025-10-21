@@ -22,13 +22,10 @@ export const ProjectsList = async ({
       {/* Desktop: 4 sloupce, Tablet: 2 sloupce, Mobile: 1 sloupec */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {projects.map((project) => {
-          const coverImageUrl = project.coverImage?.[0]?.url
-            ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${project.coverImage[0].url}`
-            : null;
+          const coverImageUrl = project.coverImage?.[0]?.url || null;
 
-          const teamMemberPhotoUrl = project.clenove_tymu?.Photo?.[0]?.url
-            ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${project.clenove_tymu.Photo[0].url}`
-            : null;
+          const teamMemberPhotoUrl =
+            project.clenove_tymu?.Photo?.[0]?.url || null;
 
           return (
             <article

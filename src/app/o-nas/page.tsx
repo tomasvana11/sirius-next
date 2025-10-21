@@ -49,13 +49,13 @@ export default async function OnasPage() {
         )}
       </ContentWrapper>
       {data.videoSection && (
-        <div className="bg-[#220B03] py-20 relative">
+        <div className="bg-[#220B03] py-20 relative z-0 overflow-hidden">
           <div
-            className="absolute bottom-0 -left-60 md:-left-20 w-[150%] md:w-[110%] h-full pointer-events-none"
+            className="absolute bottom-0  w-[150%] md:w-[110%] -left-60 md:-left-20 h-full pointer-events-none -z-50"
             style={{
               backgroundImage: "url('/img/pattern-dark.png')",
               backgroundPosition: "bottom left",
-              backgroundSize: "110% auto",
+              backgroundSize: "100% auto",
               backgroundRepeat: "no-repeat",
             }}
           />
