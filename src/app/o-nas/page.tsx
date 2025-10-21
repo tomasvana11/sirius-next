@@ -16,7 +16,7 @@ export default async function OnasPage() {
   const valueCards =
     data.valuesSection?.Value.map((value) => {
       const imageUrl = value.backgroundImage?.url
-        ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${value.backgroundImage.url}`
+        ? value.backgroundImage.url // Už obsahuje kompletní URL
         : "/icons/system/img-placeholder.svg";
 
       return {

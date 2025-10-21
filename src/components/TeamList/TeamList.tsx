@@ -18,9 +18,7 @@ export const TeamList = async ({ limit = "all", className }: TeamListProps) => {
       {/* Desktop: 5 sloupců, Tablet: 3 sloupce, Mobile: 2 sloupce */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         {teamMembers.map((member) => {
-          const photoUrl = member.Photo?.[0]?.url
-            ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${member.Photo[0].url}`
-            : null;
+          const photoUrl = member.Photo?.[0]?.url || null;
 
           return (
             <article key={member.id} className="flex flex-col">

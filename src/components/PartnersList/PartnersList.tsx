@@ -20,9 +20,7 @@ export const PartnersList = async ({
       {/* Desktop: 6 sloupců, Tablet: 4 sloupce, Mobile: 3 sloupce */}
       <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
         {partners.map((partner) => {
-          const logoUrl = partner.Logo?.[0]?.url
-            ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${partner.Logo[0].url}`
-            : null;
+          const logoUrl = partner.Logo?.[0]?.url ?? null;
 
           return (
             <div

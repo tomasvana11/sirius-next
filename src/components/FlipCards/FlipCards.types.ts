@@ -2,7 +2,7 @@ export interface FlipCard {
     id: number;
     title: string;
     description: string;
-    image: string; // URL obrázku
+    image: string; 
   }
   
   export interface FlipCardsProps {

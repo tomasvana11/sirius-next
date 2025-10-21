@@ -21,7 +21,7 @@ export default async function CareerPage() {
   const valueCards =
     data.ValuesSection?.Value.map((value) => {
       const imageUrl = value.backgroundImage?.url
-        ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${value.backgroundImage.url}`
+        ? value.backgroundImage.url // URL už je kompletní z Digital Ocean Spaces
         : "/icons/system/img-placeholder.svg";
 
       return {
