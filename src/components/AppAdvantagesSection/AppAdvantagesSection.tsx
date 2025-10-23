@@ -75,7 +75,7 @@ export const AppAdvantagesSection: React.FC<AppAdvantagesSectionProps> = ({
                     {appBlockData.appFeatures?.map((feature) => (
                       <div
                         key={feature.id}
-                        className="flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-r-full py-4 pl-8 pr-4 max-w-[280px]"
+                        className="flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-r-full p-4 max-w-[280px]"
                       >
                         <Image
                           src="/icons/system/check.svg"
@@ -84,7 +84,7 @@ export const AppAdvantagesSection: React.FC<AppAdvantagesSectionProps> = ({
                           height={24}
                           className="shrink-0"
                         />
-                        <span className="text-neutral-800 text-base font-medium">
+                        <span className="text-neutral-800 text-base font-medium leading-tight">
                           {feature.appFeature}
                         </span>
                       </div>

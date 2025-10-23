@@ -23,6 +23,7 @@ export async function getTopBar(): Promise<TopBar | null> {
 export async function getHomepage(): Promise<Homepage> {
     const response = await strapiRequest<StrapiResponse<Homepage>>("homepage", {
       populate: {
+        "populate[HeroBanner][populate][heroImage][populate]": "*",
         "populate[HeroBanner][populate][heroBannerButton][populate]": "*",
         "populate[Numbers][populate][Number][populate]": "*",
         "populate[appAdvantages][populate]": "*",
@@ -44,6 +45,7 @@ export async function getBlogPage(): Promise<BlogPage> {
     const response = await strapiRequest<StrapiResponse<BlogPage>>("blogpage", {
       populate: {
         "populate[HeroBanner][populate][heroBannerButton][populate]": "*",
+        "populate[HeroBanner][populate][heroImage][populate]": "*", 
       },
     });
     return response.data;
@@ -55,6 +57,7 @@ export async function getProjectsPage(): Promise<ProjectsPage> {
     const response = await strapiRequest<StrapiResponse<ProjectsPage>>("projekty", {
       populate: {
         "populate[HeroBanner][populate][heroBannerButton][populate]": "*",
+        "populate[HeroBanner][populate][heroImage][populate]": "*", 
       },
     });
     return response.data;
@@ -117,6 +120,7 @@ export async function getAboutPage() {
       "populate[team][populate]": "*",
       "populate[values][populate]": "*",
       "populate[history][populate]": "*",
+      "populate[HeroBanner][populate][heroImage][populate]": "*", 
     },
   });
   return response.data;
@@ -282,6 +286,7 @@ export async function getContactPage(): Promise<ContactPage> {
   const response = await strapiRequest<StrapiResponse<ContactPage>>("kontakty", {
     populate: {
       "populate[HeroBanner][populate][heroBannerButton][populate]": "*",
+      "populate[HeroBanner][populate][heroImage][populate]": "*", 
     },
   });
   return response.data;
@@ -291,6 +296,7 @@ export async function getReferencePage(): Promise<ReferencePage> {
   const response = await strapiRequest<StrapiResponse<ReferencePage>>("reference", {
     populate: {
       "populate[HeroBanner][populate][heroBannerButton][populate]": "*",
+      "populate[HeroBanner][populate][heroImage][populate]": "*", 
     },
   });
   return response.data;
@@ -302,6 +308,7 @@ export async function getClientPage(): Promise<ClientPage> {
       "populate[HeroBanner][populate][heroBannerButton][populate]": "*",
       "populate[ClaimSection][populate][Mission][populate]": "*",
       "populate[servicesSesction][populate][Service][populate]": "*",
+      "populate[HeroBanner][populate][heroImage][populate]": "*", 
     },
   });
   return response.data;
@@ -314,6 +321,7 @@ export async function getOnasPage(): Promise<OnasPage> {
       "populate[HeroBanner][populate][heroBannerButton][populate]": "*",
       "populate[valuesSection][populate][Value][populate]": "*",
       "populate[videoSection]": "*",
+      "populate[HeroBanner][populate][heroImage][populate]": "*", 
     },
   });
   return response.data;
@@ -326,6 +334,7 @@ export async function getCareerPage(): Promise<CareerPage> {
       "populate[ValuesSection][populate][Value][populate]": "*",
       "populate[DayInSirius]": "*",
       "populate[careerAdvantages][populate][cardsAdvantages][populate]": "*",
+      "populate[HeroBanner][populate][heroImage][populate]": "*", 
     },
   });
   return response.data;

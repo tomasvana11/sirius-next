@@ -13,7 +13,7 @@ export default async function ProjectsPage() {
       <Hero
         title={data.HeroBanner.Title}
         description={data.HeroBanner.Description}
-        backgroundImage="homepage.webp"
+        heroImage={data.HeroBanner.heroImage}
         buttonText={data.HeroBanner.heroBannerButton?.displayText}
         buttonUrl={data.HeroBanner.heroBannerButton?.Url}
         buttonPage={data.HeroBanner.heroBannerButton?.Page}

@@ -52,7 +52,7 @@ export interface StrapiResponse<T> {
       id: number;
       Title: string;
       Description: string;
-      backgroundImage?: StrapiImage;
+      heroImage?: StrapiImage;
       heroBannerButton?: {
         id: number;
         displayText: string;
@@ -159,6 +159,7 @@ export interface StrapiResponse<T> {
       id: number;
       Title: string;
       Description: string;
+      heroImage?: StrapiImage;
       heroBannerButton?: {
         id: number;
         displayText: string;
@@ -178,6 +179,7 @@ export interface StrapiResponse<T> {
       id: number;
       Title: string;
       Description: string;
+      heroImage?: StrapiImage;
       heroBannerButton?: {
         id: number;
         displayText: string;
@@ -315,6 +317,7 @@ export interface ContactPage {
     id: number;
     Title: string;
     Description: string;
+    heroImage?: StrapiImage;
     heroBannerButton?: {
       id: number;
       displayText: string;
@@ -332,6 +335,7 @@ export interface ReferencePage {
     id: number;
     Title: string;
     Description: string;
+    heroImage?: StrapiImage;
     heroBannerButton?: {
       id: number;
       displayText: string;
@@ -349,6 +353,7 @@ export interface ClientPage {
     id: number;
     Title: string;
     Description: string;
+    heroImage?: StrapiImage;
     heroBannerButton?: {
       id: number;
       displayText: string;
@@ -368,6 +373,7 @@ export interface OnasPage {
     id: number;
     Title: string;
     Description: string;
+    heroImage?: StrapiImage;
     heroBannerButton?: {
       id: number;
       displayText: string;
@@ -387,6 +393,7 @@ export interface CareerPage {
     id: number;
     Title: string;
     Description: string;
+    heroImage?: StrapiImage;
     heroBannerButton?: {
       id: number;
       displayText: string;

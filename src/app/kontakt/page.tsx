@@ -10,8 +10,8 @@ export default async function ContactPage() {
       <Hero
         title={data.HeroBanner.Title}
         description={data.HeroBanner.Description}
-        backgroundImage="homepage.webp"
         buttonText={data.HeroBanner.heroBannerButton?.displayText}
+        heroImage={data.HeroBanner.heroImage}
         buttonUrl={data.HeroBanner.heroBannerButton?.Url}
         buttonPage={data.HeroBanner.heroBannerButton?.Page}
         buttonIsExternal={data.HeroBanner.heroBannerButton?.isExternal}

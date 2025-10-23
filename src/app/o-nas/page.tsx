@@ -16,7 +16,7 @@ export default async function OnasPage() {
   const valueCards =
     data.valuesSection?.Value.map((value) => {
       const imageUrl = value.backgroundImage?.url
-        ? value.backgroundImage.url // Už obsahuje kompletní URL
+        ? value.backgroundImage.url
         : "/icons/system/img-placeholder.svg";
 
       return {
@@ -32,7 +32,7 @@ export default async function OnasPage() {
       <Hero
         title={data.HeroBanner.Title}
         description={data.HeroBanner.Description}
-        backgroundImage="homepage.webp"
+        heroImage={data.HeroBanner.heroImage}
         buttonText={data.HeroBanner.heroBannerButton?.displayText}
         buttonUrl={data.HeroBanner.heroBannerButton?.Url}
         buttonPage={data.HeroBanner.heroBannerButton?.Page}
