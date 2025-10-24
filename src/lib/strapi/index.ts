@@ -37,10 +37,12 @@ export type {
   ServicesSesction, ServiceItem,
   TextReference, TextReferencesResponse,
   Facts,
+  FooterPage, FooterPagesResponse
   
 } from "./types";
 
 export {
+  getFooterPages, getFooterPageBySlug,
   getTopBar,
   getHomepage,
   getBlogPage,

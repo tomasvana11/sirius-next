@@ -617,3 +617,29 @@ export interface Facts {
   id: number;
   fact: Fact[];
 }
+
+/**
+ * Footer Page (Legal pages) typy
+ */
+export interface FooterPage {
+  id: number;
+  documentId: string;
+  Title: string;
+  slug: string;
+  Content: RichTextNode[];
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+export interface FooterPagesResponse {
+  data: FooterPage[];
+  meta: {
+    pagination: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
+}

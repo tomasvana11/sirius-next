@@ -1,7 +1,7 @@
 // lib/strapi/services.ts
 
 import { strapiRequest } from "./config";
-import type { StrapiResponse, TopBar, Homepage, BlogPage, ProjectsPage, ContactPage, ReferencePage, ClientPage, OnasPage, CareerPage,Career, SocialMedia, CareerBanner, ContactFormData, FormBanner, BlogPost, BlogsResponse, Project, ProjectsResponse, TeamMember, Partner, PartnersResponse, CareerResponse, QuestionsSection, TextReferencesResponse, TextReference } from "./types";
+import type { FooterPage, FooterPagesResponse, StrapiResponse, TopBar, Homepage, BlogPage, ProjectsPage, ContactPage, ReferencePage, ClientPage, OnasPage, CareerPage,Career, SocialMedia, CareerBanner, ContactFormData, FormBanner, BlogPost, BlogsResponse, Project, ProjectsResponse, TeamMember, Partner, PartnersResponse, CareerResponse, QuestionsSection, TextReferencesResponse, TextReference } from "./types";
 
 /**
  * Služba pro Top Bar
@@ -509,5 +509,45 @@ export async function getTextReferences(limit?: number | "all"): Promise<TextRef
   } catch (error) {
     console.error("Failed to fetch text references:", error);
     return [];
+  }
+}
+
+/**
+ * Služba pro získání všech footer pages
+ */
+export async function getFooterPages(): Promise<FooterPage[]> {
+  try {
+    const response = await strapiRequest<FooterPagesResponse>(
+      "stranky-patickas",
+      {
+        sort: ["createdAt:desc"],
+      }
+    );
+    return response.data || [];
+  } catch (error) {
+    console.error("Failed to fetch footer pages:", error);
+    return [];
+  }
+}
+
+/**
+ * Služba pro získání jedné footer page podle slug
+ */
+export async function getFooterPageBySlug(slug: string): Promise<FooterPage | null> {
+  try {
+    const response = await strapiRequest<FooterPagesResponse>(
+      "stranky-patickas",
+      {
+        filters: {
+          slug: {
+            $eq: slug,
+          },
+        },
+      }
+    );
+    return response.data?.[0] || null;
+  } catch (error) {
+    console.error("Failed to fetch footer page:", error);
+    return null;
   }
 }
