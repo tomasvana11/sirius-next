@@ -642,4 +642,4 @@ export interface FooterPagesResponse {
       total: number;
     };
   };
-}
+} 
