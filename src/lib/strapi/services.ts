@@ -1,7 +1,8 @@
 // lib/strapi/services.ts
 
 import { strapiRequest } from "./config";
-import type { FooterPage, FooterPagesResponse, StrapiResponse, TopBar, Homepage, BlogPage, ProjectsPage, ContactPage, ReferencePage, ClientPage, OnasPage, CareerPage,Career, SocialMedia, CareerBanner, ContactFormData, FormBanner, BlogPost, BlogsResponse, Project, ProjectsResponse, TeamMember, Partner, PartnersResponse, CareerResponse, QuestionsSection, TextReferencesResponse, TextReference } from "./types";
+import type { SiriusCast,SiriusCastBanner,
+  SiriusCastsResponse,FooterPage, FooterPagesResponse, StrapiResponse, TopBar, Homepage, BlogPage, ProjectsPage, ContactPage, ReferencePage, ClientPage, OnasPage, CareerPage,Career, SocialMedia, CareerBanner, ContactFormData, FormBanner, BlogPost, BlogsResponse, Project, ProjectsResponse, TeamMember, Partner, PartnersResponse, CareerResponse, QuestionsSection, TextReferencesResponse, TextReference } from "./types";
 
 /**
  * Služba pro Top Bar
@@ -548,6 +549,52 @@ export async function getFooterPageBySlug(slug: string): Promise<FooterPage | nu
     return response.data?.[0] || null;
   } catch (error) {
     console.error("Failed to fetch footer page:", error);
+    return null;
+  }
+}
+
+/**
+ * Služba pro získání Sirius Cast epizod
+ */
+export async function getSiriusCasts(limit?: number | "all"): Promise<SiriusCast[]> {
+  try {
+    const params: {
+      sort: string[];
+      populate: string[];
+      pagination?: { limit: number };
+    } = {
+      sort: ["publishedAt:desc"],
+      populate: ["cover"],
+    };
+
+    if (limit !== "all" && limit) {
+      params.pagination = { limit };
+    }
+
+    const response = await strapiRequest<SiriusCastsResponse>(
+      "sirius-casts",
+      params
+    );
+
+    return response.data || [];
+  } catch (error) {
+    console.error("Failed to fetch Sirius Casts:", error);
+    return [];
+  }
+}
+
+/**
+ * Služba pro získání Sirius Cast Banner
+ */
+export async function getSiriusCastBanner(): Promise<SiriusCastBanner | null> {
+  try {
+    const response = await strapiRequest<StrapiResponse<SiriusCastBanner>>(
+      "sirius-cast-banner",
+      {}
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Failed to fetch Sirius Cast Banner:", error);
     return null;
   }
 }

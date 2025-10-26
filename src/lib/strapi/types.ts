@@ -643,3 +643,41 @@ export interface FooterPagesResponse {
     };
   };
 } 
+
+export interface SiriusCast {
+  id: number;
+  documentId: string;
+  Title: string;
+  spotifyLink: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  cover: StrapiImage;
+}
+
+export interface SiriusCastsResponse {
+  data: SiriusCast[];
+  meta: {
+    pagination: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
+}
+
+/**
+ * Sirius Cast Banner typy
+ */
+export interface SiriusCastBanner {
+  id: number;
+  documentId: string;
+  Title: string;
+  Description: string;
+  spotifyLink: string;
+  youtubeLink: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
