@@ -27,7 +27,7 @@ interface ClientTimelineProps {
     Title: string;
     Description: string;
     TimelineItem: TimelineItem[];
-    backgroundImage: BackgroundImage;
+    backgroundImage: BackgroundImage | null;
     sideLabel: SideLabel[];
   };
 }
@@ -38,16 +38,22 @@ export function ClientTimeline({ data }: ClientTimelineProps) {
     "https://sirius-strapi-qbx63.ondigitalocean.app";
 
   return (
-    <section className="relative  rounded-xl overflow-hidden p-4 md:p-8 bg-[#EC4C19]">
+    <section className="relative rounded-xl overflow-hidden p-4 md:p-8 bg-[#EC4C19]">
       <div className="absolute inset-0 z-0">
-        <Image
-          src={`${baseUrl}${data.backgroundImage.url}`}
-          alt={data.backgroundImage.alternativeText || "Client background"}
-          fill
-          className="object-cover object-top md:object-center"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#EC4C19]/85 to-[#EC4C19]/15" />
+        {data.backgroundImage?.url ? (
+          <>
+            <Image
+              src={data.backgroundImage.url}
+              alt={data.backgroundImage.alternativeText || "Client background"}
+              fill
+              className="object-cover object-top md:object-center"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#EC4C19]/85 to-[#EC4C19]/15" />
+          </>
+        ) : (
+          <div className="absolute inset-0 bg-[#EC4C19]" />
+        )}
       </div>
 
       <div className="relative z-10">
@@ -127,6 +133,7 @@ export function ClientTimeline({ data }: ClientTimelineProps) {
   );
 }
 */
+
 // components/ClientTimeline.tsx
 import Icon from "@/components/Icon";
 import Image from "next/image";
@@ -161,13 +168,9 @@ interface ClientTimelineProps {
 }
 
 export function ClientTimeline({ data }: ClientTimelineProps) {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_STRAPI_URL ||
-    "https://sirius-strapi-qbx63.ondigitalocean.app";
-
   return (
     <section className="relative rounded-xl overflow-hidden p-4 md:p-8 bg-[#EC4C19]">
-      {/* Background Image */}
+      {/* Background Image - PŮVODNÍ FUNGUJÍCÍ VERZE */}
       <div className="absolute inset-0 z-0">
         {data.backgroundImage?.url ? (
           <>
@@ -207,9 +210,11 @@ export function ClientTimeline({ data }: ClientTimelineProps) {
                   className="bg-[#220B03]/80 backdrop-blur-sm rounded-xl p-4 flex items-center gap-4"
                 >
                   <div className="bg-[#EC4C19] rounded-lg p-3 flex-shrink-0">
-                    <Icon name={label.Icon} size="M" className="text-white" />
+                    <Icon name={label.Icon} size="M" variant="white" />
                   </div>
-                  <p className="text-sm lg:text-base">{label.Text}</p>
+                  <p className="text-sm lg:text-base text-white">
+                    {label.Text}
+                  </p>
                 </div>
               ))}
             </div>
@@ -229,11 +234,7 @@ export function ClientTimeline({ data }: ClientTimelineProps) {
                     {/* Icon */}
                     <div className="flex-shrink-0 relative z-10">
                       <div className="bg-[#EC4C19] rounded-full p-3">
-                        <Icon
-                          name={item.Icon || "diamond"}
-                          size="M"
-                          className="text-white"
-                        />
+                        <Icon name={item.Icon} size="M" variant="white" />
                       </div>
                     </div>
 
@@ -260,9 +261,9 @@ export function ClientTimeline({ data }: ClientTimelineProps) {
                 className="bg-[#220B03]/80 backdrop-blur-sm rounded-xl p-4 flex items-center gap-4"
               >
                 <div className="bg-[#EC4C19] rounded-lg p-3 flex-shrink-0">
-                  <Icon name={label.Icon} size="M" className="text-white" />
+                  <Icon name={label.Icon} size="M" variant="white" />
                 </div>
-                <p className="text-sm">{label.Text}</p>
+                <p className="text-sm text-white">{label.Text}</p>
               </div>
             ))}
           </div>
