@@ -1,6 +1,5 @@
 import { getBlogPage } from "@/lib/strapi";
 import { ContentWrapper } from "@/components/ContentWrapper";
-import { CareerBanner } from "@/components/CareerBanner";
 import { BlogList } from "@/components/BlogList";
 import { ContactFormBanner } from "@/components/ContactFormBanner";
 import { Hero } from "@/components/Hero";

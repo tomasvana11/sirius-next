@@ -6,6 +6,7 @@ import { IconCard } from "@/components/IconCard";
 import { Title } from "@/components/Title";
 import { FeaturedTestimonials } from "@/components/FeaturedTestimonials";
 import { ClientTimeline } from "@/components/ClientTimeline";
+import { Calculator } from "@/components/Calculator";
 import { getClientTimeline } from "@/lib/fetch/strapi";
 
 export default async function ClientPage() {
@@ -80,8 +81,14 @@ export default async function ClientPage() {
         <div className="pt-8 lg:pt-14">
           <ClientTimeline data={clientTimelineData} />
         </div>
+        <div className="pt-8 lg:pt-14">
+          <Calculator />
+        </div>
+
         <FeaturedTestimonials />
-        <ContactFormBanner />
+        <div id="kontakt">
+          <ContactFormBanner />
+        </div>
       </ContentWrapper>
     </>
   );

@@ -19,7 +19,7 @@ export const FeaturedSiriusCast = async ({
   return (
     <section className={className}>
       {/* Banner sekce s pozadím */}
-      <div className="relative rounded-xl overflow-hidden p-6 lg:p-8">
+      <div className="relative rounded-xl overflow-hidden py-6 px-4 lg:py-8 lg:px-8">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image

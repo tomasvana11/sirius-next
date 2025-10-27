@@ -1,6 +1,5 @@
 // components/SiriusCastList/SiriusCastList.tsx
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { getSiriusCasts } from "@/lib/strapi";
 import { Title } from "@/components/Title";

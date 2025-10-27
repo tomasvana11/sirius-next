@@ -1,6 +1,5 @@
 // components/Numbers/Numbers.tsx
 import React from "react";
-import { ContentWrapper } from "@/components/ContentWrapper";
 import { Title } from "@/components/Title";
 
 interface NumberItem {

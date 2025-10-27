@@ -1,6 +1,5 @@
 import React from "react";
 import { Title } from "@/components/Title";
-import { ProjectsList } from "../ProjectsList";
 import { TeamList } from "../TeamList";
 
 export const FeaturedTeam = () => {
