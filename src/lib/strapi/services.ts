@@ -1,7 +1,7 @@
 // lib/strapi/services.ts
 
 import { strapiRequest } from "./config";
-import type { SiriusCast,SiriusCastBanner,
+import type { SiriusCast,SiriusCastBanner, BranchesResponse, Branch, 
   SiriusCastsResponse,FooterPage, FooterPagesResponse, StrapiResponse, TopBar, Homepage, BlogPage, ProjectsPage, ContactPage, ReferencePage, ClientPage, OnasPage, CareerPage,Career, SocialMedia, CareerBanner, ContactFormData, FormBanner, BlogPost, BlogsResponse, Project, ProjectsResponse, TeamMember, Partner, PartnersResponse, CareerResponse, QuestionsSection, TextReferencesResponse, TextReference } from "./types";
 
 /**
@@ -596,5 +596,26 @@ export async function getSiriusCastBanner(): Promise<SiriusCastBanner | null> {
   } catch (error) {
     console.error("Failed to fetch Sirius Cast Banner:", error);
     return null;
+  }
+}
+
+/**
+ * Služba pro získání poboček
+ */
+export async function getBranches(): Promise<Branch[]> {
+  try {
+    const response = await strapiRequest<BranchesResponse>(
+      "branches",
+      {
+        populate: {
+          "populate[clenove_tymu][populate]": "*",
+        },
+        sort: ["City:asc"],
+      }
+    );
+    return response.data || [];
+  } catch (error) {
+    console.error("Failed to fetch branches:", error);
+    return [];
   }
 }

@@ -39,7 +39,8 @@ export type {
   Facts,
   FooterPage, FooterPagesResponse,
   SiriusCast, SiriusCastsResponse,
-  SiriusCastBanner
+  SiriusCastBanner,
+  Branch, BranchesResponse, RegionEnum
 } from "./types";
 
 export {
@@ -69,7 +70,8 @@ export {
   getCareer,
   getTextReferences,
   getSiriusCasts,
-  getSiriusCastBanner
+  getSiriusCastBanner,
+  getBranches,
 } from "./services";
 
 // Utility funkce

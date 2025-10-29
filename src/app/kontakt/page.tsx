@@ -86,6 +86,7 @@ export default async function ContactPage() {
 }
 */
 
+/*
 import { getContactPage } from "@/lib/strapi";
 import { ContentWrapper } from "@/components/ContentWrapper";
 import { ContactFormBanner } from "@/components/ContactFormBanner";
@@ -106,6 +107,106 @@ export default async function ContactPage() {
         buttonIsExternal={data.HeroBanner.heroBannerButton?.isExternal}
         type="default"
       />
+      <ContentWrapper className="pt-8 lg:pt-14 flex gap-8 items-stretch flex-col xl:flex-row">
+        <ContactFormBanner className="w-full xl:flex-1" />
+        <div className="w-full xl:flex-1">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
+            <div className="bg-neutral-100 border border-neutral-200 rounded-xl p-6">
+              <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center mb-4">
+                <Image
+                  src="/icons/system/email.svg"
+                  alt="Email icon"
+                  width={32}
+                  height={32}
+                />
+              </div>
+              <h3 className="text-xl font-semibold mb-2 [font-family:var(--font-nunito)] [font-weight:700]">
+                info@siriusfinance.cz
+              </h3>
+              <p className="text-neutral-600">Všední dny 9:00 - 17:00</p>
+            </div>
+            <div className="bg-neutral-100 border border-neutral-200 rounded-xl p-6">
+              <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center mb-4">
+                <Image
+                  src="/icons/system/document.svg"
+                  alt="Document icon"
+                  width={32}
+                  height={32}
+                />
+              </div>
+              <h3 className="text-xl font-semibold mb-2 [font-family:var(--font-nunito)] [font-weight:700]">
+                SIRIUS FINANCE, a.s.
+              </h3>
+              <p className="text-neutral-600">IČ: 055 51 421</p>
+              <p className="text-neutral-600">DIČ: CZ05551421</p>
+            </div>
+            <div className="bg-neutral-100 border border-neutral-200 rounded-xl p-6">
+              <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center mb-4">
+                <Image
+                  src="/icons/system/location.svg"
+                  alt="Location icon"
+                  width={32}
+                  height={32}
+                />
+              </div>
+              <h3 className="text-lg font-semibold mb-1 [font-family:var(--font-nunito)] [font-weight:700]">
+                Lighthouse Tower,
+              </h3>
+              <h3 className="text-lg font-semibold mb-1 [font-family:var(--font-nunito)] [font-weight:700]">
+                Jankovcova 1569/2C,
+              </h3>
+              <h3 className="text-lg font-semibold mb-3 [font-family:var(--font-nunito)] [font-weight:700]">
+                170 00 Praha 7
+              </h3>
+            </div>
+            <div className="bg-neutral-100 border border-neutral-200 rounded-xl p-6">
+              <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center mb-4">
+                <Image
+                  src="/icons/system/location.svg"
+                  alt="Location icon"
+                  width={32}
+                  height={32}
+                />
+              </div>
+              <h3 className="text-lg font-semibold mb-1 [font-family:var(--font-nunito)] [font-weight:700]">
+                Vídeňská 995/63,
+              </h3>
+              <h3 className="text-lg font-semibold [font-family:var(--font-nunito)] [font-weight:700]">
+                Brno
+              </h3>
+            </div>
+          </div>
+        </div>
+      </ContentWrapper>
+    </>
+  );
+}
+*/
+
+// app/kontakt/page.tsx
+import { getContactPage, getBranches } from "@/lib/strapi";
+import { ContentWrapper } from "@/components/ContentWrapper";
+import { ContactFormBanner } from "@/components/ContactFormBanner";
+import { Hero } from "@/components/Hero";
+import { BranchesMap } from "@/components/BranchesMap";
+import Image from "next/image";
+
+export default async function ContactPage() {
+  const [data, branches] = await Promise.all([getContactPage(), getBranches()]);
+
+  return (
+    <>
+      <Hero
+        title={data.HeroBanner.Title}
+        description={data.HeroBanner.Description}
+        buttonText={data.HeroBanner.heroBannerButton?.displayText}
+        heroImage={data.HeroBanner.heroImage}
+        buttonUrl={data.HeroBanner.heroBannerButton?.Url}
+        buttonPage={data.HeroBanner.heroBannerButton?.Page}
+        buttonIsExternal={data.HeroBanner.heroBannerButton?.isExternal}
+        type="default"
+      />
+
       <ContentWrapper className="pt-8 lg:pt-14 flex gap-8 items-stretch flex-col xl:flex-row">
         <ContactFormBanner className="w-full xl:flex-1" />
         <div className="w-full xl:flex-1">
@@ -180,6 +281,20 @@ export default async function ContactPage() {
             </div>
           </div>
         </div>
+      </ContentWrapper>
+
+      {/* Pobočky sekce */}
+      <ContentWrapper className="py-12 lg:py-20">
+        <div className="mb-12 text-center">
+          <h2 className="text-4xl lg:text-5xl font-bold text-neutral-800 mb-4 [font-family:var(--font-nunito)]">
+            Naše pobočky
+          </h2>
+          <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
+            Vyberte kraj na mapě nebo v seznamu pro zobrazení poboček
+          </p>
+        </div>
+
+        <BranchesMap branches={branches} />
       </ContentWrapper>
     </>
   );

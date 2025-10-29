@@ -681,3 +681,46 @@ export interface SiriusCastBanner {
   updatedAt: string;
   publishedAt: string;
 }
+
+// Branch types
+export interface Branch {
+  id: number;
+  documentId: string;
+  City: string;
+  Region: RegionEnum;
+  Address: string;
+  Phone: string;
+  Email: string;
+  clenove_tymu: TeamMember;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+export type RegionEnum = 
+  | "Hlavní město Praha"
+  | "Středočeský kraj"
+  | "Jihočeský kraj"
+  | "Plzeňský kraj"
+  | "Karlovarský kraj"
+  | "Ústecký kraj"
+  | "Liberecký kraj"
+  | "Královéhradecký kraj"
+  | "Pardubický kraj"
+  | "Kraj Vysočina"
+  | "Jihomoravský kraj"
+  | "Olomoucký kraj"
+  | "Zlínský kraj"
+  | "Moravskoslezský kraj";
+
+export interface BranchesResponse {
+  data: Branch[];
+  meta: {
+    pagination: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
+}
