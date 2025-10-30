@@ -151,7 +151,7 @@ export const Hero: React.FC<HeroProps> = ({
   const isExternalImage = !!strapiImageUrl;
 
   return (
-    <section className="relative py-20 flex items-center">
+    <section className="relative py-20 flex items-center max-w-[1600px] mx-auto hero:rounded-xl hero:mt-8 overflow-hidden">
       <Image
         src={imageUrl}
         alt={heroImage?.alternativeText || title}

@@ -58,7 +58,7 @@ export const Navbar = () => {
               href="/spoluprace"
               className="text-neutral-700 hover:text-[#EC4C19] font-medium"
             >
-              Spolupráce
+              Pro klienty
             </Link>
             <Link
               href="/kariera"
@@ -122,7 +122,7 @@ export const Navbar = () => {
                     href="/spoluprace"
                     className="text-lg font-medium hover:text-[#EC4C19]"
                   >
-                    Spolupráce
+                    Pro klienty
                   </Link>
                   <Link
                     href="/kariera"
