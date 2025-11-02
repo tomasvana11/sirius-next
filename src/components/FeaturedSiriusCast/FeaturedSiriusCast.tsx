@@ -64,7 +64,7 @@ export const FeaturedSiriusCast = async ({
               target="_blank"
               rel="noopener noreferrer"
             >
-              SiriusCast na Spotify
+              SIRIUScast na Spotify
             </ButtonLink>
 
             <ButtonLink
@@ -74,7 +74,7 @@ export const FeaturedSiriusCast = async ({
               target="_blank"
               rel="noopener noreferrer"
             >
-              SiriusCast na YouTube
+              SIRIUScast na YouTube
             </ButtonLink>
           </div>
         </div>

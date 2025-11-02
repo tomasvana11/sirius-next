@@ -51,7 +51,7 @@ export default async function RootLayout({
 
                 {/* Links */}
                 {topBar.Links && topBar.Links.length > 0 && (
-                  <div className="flex gap-4 items-center">
+                  <div className="flex gap-4 items-center hidden lg:flex">
                     {topBar.Links.map((link) => (
                       <a
                         key={link.id}

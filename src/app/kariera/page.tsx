@@ -11,6 +11,7 @@ import { OnboardingBanner } from "@/components/OnboardingBanner";
 import { IconCard } from "@/components/IconCard";
 import { CareerTimeline } from "@/components/CareerTimeline";
 import { getCareerTimeline } from "@/lib/fetch/strapi";
+import { FeaturedSiriusCast } from "@/components/FeaturedSiriusCast";
 
 export default async function CareerPage() {
   const data = await getCareerPage();
@@ -125,6 +126,7 @@ export default async function CareerPage() {
       )}
       <ContentWrapper>
         <CareerTimeline data={careerTimelineData} />
+        <FeaturedSiriusCast className="mt-8 pt-8 lg:pt-0" />
         <FeaturedBlog />
         <ContactFormBanner />
       </ContentWrapper>
