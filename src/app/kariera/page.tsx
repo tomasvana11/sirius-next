@@ -128,7 +128,9 @@ export default async function CareerPage() {
         <CareerTimeline data={careerTimelineData} />
         <FeaturedSiriusCast className="mt-8 pt-8 lg:pt-0" />
         <FeaturedBlog />
-        <ContactFormBanner />
+        <div id="formular">
+          <ContactFormBanner />
+        </div>
       </ContentWrapper>
     </>
   );

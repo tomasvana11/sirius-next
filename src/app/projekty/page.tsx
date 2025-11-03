@@ -24,7 +24,9 @@ export default async function ProjectsPage() {
         <ProjectsList limit="all" className="py-10 lg:py-14" />
         <CareerBanner />
         <FeaturedBlog />
-        <ContactFormBanner />
+        <div id="formular">
+          <ContactFormBanner />
+        </div>
       </ContentWrapper>
     </>
   );

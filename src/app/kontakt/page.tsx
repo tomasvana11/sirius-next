@@ -222,7 +222,9 @@ export default async function ContactPage() {
       </ContentWrapper>
 
       <ContentWrapper className="pt-8 lg:pt-14 flex gap-8 items-stretch flex-col xl:flex-row">
-        <ContactFormBanner className="w-full xl:flex-1" />
+        <div id="formular">
+          <ContactFormBanner className="w-full xl:flex-1" />
+        </div>
         <div className="w-full xl:flex-1">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
             {/* Email Card */}

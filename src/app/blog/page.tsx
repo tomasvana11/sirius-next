@@ -20,7 +20,9 @@ export default async function BlogPage() {
       />
       <ContentWrapper>
         <BlogList limit="all" className="py-10 lg:py-14" />
-        <ContactFormBanner />
+        <div id="formular">
+          <ContactFormBanner />
+        </div>
       </ContentWrapper>
     </>
   );
