@@ -1025,7 +1025,7 @@ export const Calculator: React.FC<CalculatorProps> = ({ className }) => {
               <div className="w-px bg-white/10" />
 
               <div className="flex-1">
-                <p className="text-white/80 text-sm mb-2">Održený úrok</p>
+                <p className="text-white/80 text-sm mb-2">Obdržený úrok</p>
                 <Title as="h4" className="text-golden-gate text-xl">
                   {formatNumber(finalData?.appreciation || 0)} Kč
                 </Title>
