@@ -87,7 +87,9 @@ export default async function ClientPage() {
 
         <FeaturedTestimonials />
         <div id="kontakt">
-          <ContactFormBanner />
+          <div id="formular">
+            <ContactFormBanner />
+          </div>
         </div>
       </ContentWrapper>
     </>
