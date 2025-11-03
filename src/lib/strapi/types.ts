@@ -231,6 +231,7 @@ export interface ContactFormData {
   Name: string;
   Phone: string;
   Email: string;
+  fromPage?: string;
 }
 
 export interface ContactFormSubmission {
@@ -239,6 +240,7 @@ export interface ContactFormSubmission {
   Name: string;
   Phone: string;
   Email: string;
+  fromPage?: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
