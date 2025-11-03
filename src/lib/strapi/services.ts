@@ -380,10 +380,16 @@ export async function getTeamMembers(limit?: number | "all"): Promise<TeamMember
     const params: {
       sort: string[];
       populate: string[];
+      filters?: Record<string, { $eq: boolean }>;
       pagination?: { limit: number };
     } = {
       sort: ["publishedAt:desc"],
       populate: ["Photo"],
+      filters: { 
+        showOnPage: {
+          $eq: true,
+        },
+      },
     };
 
     if (limit !== "all" && limit) {

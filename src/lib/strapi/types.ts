@@ -415,6 +415,7 @@ export interface TeamMember {
   documentId: string;
   Name: string;
   Position: string;
+  showOnPage: boolean;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;

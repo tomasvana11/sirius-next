@@ -207,6 +207,20 @@ export default async function ContactPage() {
         type="default"
       />
 
+      {/* Pobočky sekce */}
+      <ContentWrapper className="py-12 lg:py-20">
+        <div className="mb-12 text-center">
+          <h2 className="text-4xl lg:text-5xl font-bold text-neutral-800 mb-4 [font-family:var(--font-nunito)]">
+            Naše pobočky
+          </h2>
+          <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
+            Vyberte kraj na mapě nebo v seznamu pro zobrazení poboček
+          </p>
+        </div>
+
+        <BranchesMap branches={branches} />
+      </ContentWrapper>
+
       <ContentWrapper className="pt-8 lg:pt-14 flex gap-8 items-stretch flex-col xl:flex-row">
         <ContactFormBanner className="w-full xl:flex-1" />
         <div className="w-full xl:flex-1">
@@ -281,20 +295,6 @@ export default async function ContactPage() {
             </div>
           </div>
         </div>
-      </ContentWrapper>
-
-      {/* Pobočky sekce */}
-      <ContentWrapper className="py-12 lg:py-20">
-        <div className="mb-12 text-center">
-          <h2 className="text-4xl lg:text-5xl font-bold text-neutral-800 mb-4 [font-family:var(--font-nunito)]">
-            Naše pobočky
-          </h2>
-          <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
-            Vyberte kraj na mapě nebo v seznamu pro zobrazení poboček
-          </p>
-        </div>
-
-        <BranchesMap branches={branches} />
       </ContentWrapper>
     </>
   );

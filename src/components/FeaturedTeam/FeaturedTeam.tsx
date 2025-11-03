@@ -1,3 +1,4 @@
+/*
 import React from "react";
 import { Title } from "@/components/Title";
 import { TeamList } from "../TeamList";
@@ -16,6 +17,37 @@ export const FeaturedTeam = () => {
         </p>
       </div>
       <TeamList limit="all" />
+    </section>
+  );
+};
+*/
+
+// components/FeaturedTeam/FeaturedTeam.tsx
+import React from "react";
+import { Title } from "@/components/Title";
+import { TeamList } from "../TeamList";
+import { getTeamMembers } from "@/lib/strapi";
+
+export const FeaturedTeam = async () => {
+  const teamMembers = await getTeamMembers("all");
+
+  if (!teamMembers || teamMembers.length === 0) {
+    return null;
+  }
+
+  return (
+    <section className="space-y-6 lg:space-y-8 pt-8 pb-4 lg:pt-14 lg:pb-8">
+      <div className="text-center space-y-4 justify-start">
+        <Title as="h3" className="text-golden-gate">
+          Lidé, kteří dávají SIRIU tvář i srdce
+        </Title>
+        <p className="text-base text-neutral-600">
+          Tady jsou ti, kteří z vize udělali realitu. Klíčové osobnosti SIRIUS
+          FINANCE, které svou zkušeností, hodnotami a přístupem formují podobu
+          firmy dnes i zítra.
+        </p>
+      </div>
+      <TeamList teamMembers={teamMembers} />
     </section>
   );
 };
