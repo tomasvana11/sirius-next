@@ -17,7 +17,7 @@ export const OnboardingBanner: React.FC<OnboardingBannerProps> = ({
     Title: "Už znáte odpovědi. Teď je čas udělat první krok.",
     Description:
       "Přidejte se k lidem, kteří si u nás vybudovali kariéru podle vlastních pravidel. Nechte nám kontakt a my vám ukážeme, jak může vypadat vaše budoucnost v SIRIUS FINANCE.",
-    Url: "/kontakt",
+    Url: "/kariera#formular ",
   };
 
   return (
