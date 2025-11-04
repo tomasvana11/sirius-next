@@ -37,7 +37,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
       <p className="text-base font-bold text-neutral-800 mt-4">{name}</p>
 
       {/* Klient/ka X let */}
-      <p className="text-sm text-neutral-600">
+      <p className="text-sm text-neutral-600 hidden">
         Klient/ka {yearsBeingClient}+ let
       </p>
     </div>
