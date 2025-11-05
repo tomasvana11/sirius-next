@@ -91,7 +91,11 @@ export const Navbar = () => {
               Kontakty
             </Link>
 
-            <ButtonLink variant="primary" theme="dark" href="/spoluprace">
+            <ButtonLink
+              variant="primary"
+              theme="dark"
+              href="/spoluprace#formular"
+            >
               Chci se stát klientem
             </ButtonLink>
           </div>
@@ -154,7 +158,11 @@ export const Navbar = () => {
                   >
                     Kontakty
                   </Link>
-                  <ButtonLink variant="primary" theme="dark" href="/spoluprace">
+                  <ButtonLink
+                    variant="primary"
+                    theme="dark"
+                    href="/spoluprace#formular"
+                  >
                     Chci se stát klientem
                   </ButtonLink>
                 </nav>
