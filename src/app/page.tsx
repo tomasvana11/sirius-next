@@ -72,7 +72,9 @@ export default async function HomePage() {
         <FeaturedProjects />
         <CareerBanner />
         <FeaturedBlog />
+        <div id="formular">
         <ContactFormBanner />
+        </div>
       </ContentWrapper>
     </div>
   );
