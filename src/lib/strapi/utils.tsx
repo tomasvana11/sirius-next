@@ -211,24 +211,17 @@ export function getStrapiImageUrl(
 ): string | null {
   if (!image) return null;
 
-  // Pokud chceme specifickou velikost a existuje
   if (size && image.formats?.[size]) {
     return image.formats[size].url;
   }
 
-  // Jinak vrátíme originál
   return image.url;
 }
 
-/**
- * Získá optimální velikost obrázku pro hero sekci
- * Pro hero používáme large nebo original
- */
 export function getHeroImageUrl(
   image: StrapiImage | null | undefined
 ): string | null {
   if (!image) return null;
 
-  // Pro hero preferujeme large formát, pokud existuje
-  return image.formats?.large?.url || image.url;
+  return image.url || image.formats?.large?.url || null;
 }

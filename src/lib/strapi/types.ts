@@ -256,7 +256,6 @@ export interface FormBanner {
   Description: string;
 }
 
-//Blog
 export interface StrapiImage {
   id: number;
   name: string;
