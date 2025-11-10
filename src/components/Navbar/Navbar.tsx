@@ -1,25 +1,4 @@
 /*
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { ContentWrapper } from "../ContentWrapper";
-
-export const Navbar = async () => {
-  return (
-    <nav className="bg-white">
-      <ContentWrapper>
-        <div className="flex items-center justify-between gap-6 py-4">
-          <Image src="/logo_sirius.svg" alt="Logo" width={50} height={50} />
-          <div>x</div>
-        </div>
-      </ContentWrapper>
-    </nav>
-  );
-};
-*/
-// components/Navbar.tsx
-// components/Navbar.tsx
-// components/Navbar.tsx
 "use client";
 
 import React from "react";
@@ -41,12 +20,10 @@ export const Navbar = () => {
     <nav className="bg-white shadow-sm">
       <ContentWrapper>
         <div className="flex items-center justify-between gap-6 py-4">
-          {/* Logo */}
           <Link href="/" className="flex items-center cursor-pointer">
             <Image src="/logo_sirius.svg" alt="Logo" width={50} height={50} />
           </Link>
 
-          {/* Desktop menu */}
           <div className="hidden lg:flex items-center gap-6">
             <Link
               href="/o-nas"
@@ -100,7 +77,6 @@ export const Navbar = () => {
             </ButtonLink>
           </div>
 
-          {/* Mobile menu */}
           <div className="lg:hidden">
             <Sheet>
               <SheetTrigger asChild>
@@ -172,5 +148,160 @@ export const Navbar = () => {
         </div>
       </ContentWrapper>
     </nav>
+  );
+};
+*/
+
+"use client";
+
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ContentWrapper } from "../ContentWrapper";
+import { ButtonLink } from "../ButtonLink";
+import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
+
+export const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openItemIndex, setOpenItemIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+    setOpenItemIndex(null);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    setOpenItemIndex(null);
+  };
+
+  const toggleItem = (index: number) => {
+    setOpenItemIndex(openItemIndex === index ? null : index);
+  };
+
+  const navItems = [
+    { title: "O nás", href: "/o-nas" },
+    { title: "Pro klienty", href: "/spoluprace" },
+    { title: "Kariéra", href: "/kariera" },
+    { title: "Projekty", href: "/projekty" },
+    { title: "Reference", href: "/reference" },
+    { title: "Blog", href: "/blog" },
+    { title: "Kontakty", href: "/kontakt" },
+  ];
+
+  return (
+    <>
+      <nav className="bg-white shadow-sm">
+        <ContentWrapper>
+          <div className="flex items-center justify-between gap-6 py-4">
+            {/* Logo */}
+            <Link href="/" className="flex items-center cursor-pointer">
+              <Image src="/logo_sirius.svg" alt="Logo" width={50} height={50} />
+            </Link>
+
+            {/* Desktop menu */}
+            <div className="hidden lg:flex items-center gap-6">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-neutral-700 hover:text-[#EC4C19] font-medium"
+                >
+                  {item.title}
+                </Link>
+              ))}
+
+              <ButtonLink
+                variant="primary"
+                theme="dark"
+                href="/spoluprace#formular"
+              >
+                Chci se stát klientem
+              </ButtonLink>
+            </div>
+
+            {/* Mobile menu button */}
+            <div className="lg:hidden flex items-center">
+              <button onClick={toggleMenu} className="cursor-pointer">
+                <Menu className="h-6 w-6 text-neutral-700" />
+                <span className="sr-only">Otevřít menu</span>
+              </button>
+            </div>
+          </div>
+        </ContentWrapper>
+      </nav>
+
+      {/* Mobile hamburger menu */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-50 bg-white lg:hidden">
+          {/* Header */}
+          <div className="px-5">
+            <div className="flex items-center justify-between py-4">
+              <Link href="/" onClick={closeMenu} className="flex items-center">
+                <Image
+                  src="/logo_sirius.svg"
+                  alt="Logo"
+                  width={50}
+                  height={50}
+                />
+              </Link>
+              <button
+                onClick={closeMenu}
+                aria-label="Zavřít menu"
+                className="cursor-pointer flex items-center"
+              >
+                <X className="h-6 w-6 text-neutral-700" />
+              </button>
+            </div>
+            <div className="h-px bg-neutral-200" />
+          </div>
+
+          {/* Menu content */}
+          <div
+            className="flex-1 overflow-y-auto px-5 pt-10"
+            style={{ maxHeight: "calc(100vh - 120px)" }}
+          >
+            <div className="flex flex-col space-y-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={closeMenu}
+                  className="text-neutral-700 hover:text-[#EC4C19] font-medium text-lg"
+                >
+                  {item.title}
+                </Link>
+              ))}
+            </div>
+
+            <div className="mt-10 pb-10">
+              <div className="h-px bg-neutral-200 mb-10" />
+              <div onClick={closeMenu}>
+                <ButtonLink
+                  variant="primary"
+                  theme="dark"
+                  href="/spoluprace#formular"
+                >
+                  Chci se stát klientem
+                </ButtonLink>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
