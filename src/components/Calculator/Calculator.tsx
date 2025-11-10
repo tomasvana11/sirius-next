@@ -1009,66 +1009,79 @@ export const Calculator: React.FC<CalculatorProps> = ({ className }) => {
           </div>
 
           {/* Výsledky - tmavý panel */}
-          <div className="bg-[#220B03] rounded-xl p-6 lg:p-8 text-white">
-            {/* Desktop layout */}
-            <div className="hidden lg:flex items-stretch gap-6">
-              <div className="flex-1">
-                <p className="text-white/80 text-sm mb-2">
-                  Celková částka na konci investice
-                </p>
-                <Title as="h4" className="text-golden-gate">
-                  {formatNumber(finalData?.total || 0)} Kč
-                </Title>
-              </div>
+          <div>
+            <div className="bg-[#220B03] rounded-xl p-6 lg:p-8 text-white">
+              {/* Desktop layout */}
+              <div className="hidden lg:flex items-stretch gap-6">
+                <div className="flex-1">
+                  <p className="text-white/80 text-sm mb-2">
+                    Celková částka na konci investice
+                  </p>
+                  <Title as="h4" className="text-golden-gate">
+                    {formatNumber(finalData?.total || 0)} Kč
+                  </Title>
+                </div>
 
-              {/* Vertical divider */}
-              <div className="w-px bg-white/10" />
+                {/* Vertical divider */}
+                <div className="w-px bg-white/10" />
 
-              <div className="flex-1">
-                <p className="text-white/80 text-sm mb-2">Obdržený úrok</p>
-                <Title as="h4" className="text-golden-gate text-xl">
-                  {formatNumber(finalData?.appreciation || 0)} Kč
-                </Title>
-              </div>
-
-              <div className="flex-1">
-                <p className="text-white/80 text-sm mb-2">Investovaná částka</p>
-                <Title as="h4" className="text-white text-xl">
-                  {formatNumber(finalData?.savings || 0)} Kč
-                </Title>
-              </div>
-            </div>
-
-            {/* Mobile layout */}
-            <div className="lg:hidden space-y-6">
-              <div>
-                <p className="text-white/80 text-sm mb-2">
-                  Celková částka na konci investice
-                </p>
-                <Title as="h4" className="text-golden-gate text-2xl">
-                  {formatNumber(finalData?.total || 0)} Kč
-                </Title>
-              </div>
-
-              <div className="h-px bg-white/10" />
-
-              <div className="grid grid-cols-2 gap-4">
-                <div>
+                <div className="flex-1">
                   <p className="text-white/80 text-sm mb-2">Obdržený úrok</p>
-                  <Title as="h4" className="text-golden-gate text-lg">
+                  <Title as="h4" className="text-golden-gate text-xl">
                     {formatNumber(finalData?.appreciation || 0)} Kč
                   </Title>
                 </div>
-                <div>
+
+                <div className="flex-1">
                   <p className="text-white/80 text-sm mb-2">
                     Investovaná částka
                   </p>
-                  <Title as="h4" className="text-white text-lg">
+                  <Title as="h4" className="text-white text-xl">
                     {formatNumber(finalData?.savings || 0)} Kč
                   </Title>
                 </div>
               </div>
+
+              {/* Mobile layout */}
+              <div className="lg:hidden space-y-6">
+                <div>
+                  <p className="text-white/80 text-sm mb-2">
+                    Celková částka na konci investice
+                  </p>
+                  <Title as="h4" className="text-golden-gate text-2xl">
+                    {formatNumber(finalData?.total || 0)} Kč
+                  </Title>
+                </div>
+
+                <div className="h-px bg-white/10" />
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-white/80 text-sm mb-2">Obdržený úrok</p>
+                    <Title as="h4" className="text-golden-gate text-lg">
+                      {formatNumber(finalData?.appreciation || 0)} Kč
+                    </Title>
+                  </div>
+                  <div>
+                    <p className="text-white/80 text-sm mb-2">
+                      Investovaná částka
+                    </p>
+                    <Title as="h4" className="text-white text-lg">
+                      {formatNumber(finalData?.savings || 0)} Kč
+                    </Title>
+                  </div>
+                </div>
+              </div>
             </div>
+            <p className="text-sm text-neutral-500 pt-4">
+              Právní informace: Uvedená výše prostředků po uplynutí doby
+              investování je pouze ilustrací možného budoucího vývoje a odpovídá
+              zadaným údajům; nezaručuje skutečné dosažení uvedené hodnoty.
+              Stejně tak očekávané zhodnocení nezaručuje skutečné dosažení
+              uvedeného zhodnocení; celková hodnota investovaných prostředků
+              může v čase stoupat i klesat a být odlišná na konci doby
+              investování.
+            </p>
           </div>
         </div>
       </div>
