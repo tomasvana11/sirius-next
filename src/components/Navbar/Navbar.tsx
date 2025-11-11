@@ -246,9 +246,9 @@ export const Navbar = () => {
 
       {/* Mobile hamburger menu */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-white lg:hidden">
+        <div className="fixed inset-0 z-50 bg-white lg:hidden flex flex-col h-screen">
           {/* Header */}
-          <div className="px-5">
+          <div className="px-5 flex-shrink-0">
             <div className="flex items-center justify-between py-4">
               <Link href="/" onClick={closeMenu} className="flex items-center">
                 <Image
@@ -270,10 +270,7 @@ export const Navbar = () => {
           </div>
 
           {/* Menu content */}
-          <div
-            className="flex-1 overflow-y-auto px-5 pt-10"
-            style={{ maxHeight: "calc(100vh - 120px)" }}
-          >
+          <div className="flex-1 overflow-y-auto px-5 pt-10">
             <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
                 <Link
