@@ -87,7 +87,7 @@ export const Hero: React.FC<HeroProps> = ({
           }`}
         >
           <Title as="h1" className="leading-tight">
-            {title}
+            <span dangerouslySetInnerHTML={{ __html: title }} />
           </Title>
 
           {type === "default" && description && (

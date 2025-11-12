@@ -7,6 +7,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { getTopBar, renderRichText } from "@/lib/strapi";
 import { ContentWrapper } from "@/components/ContentWrapper";
+import { getSocialMedia, getFooterPages } from "@/lib/strapi";
 
 // Inicializace Inter fontu
 const inter = Inter({
@@ -33,6 +34,8 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const topBar = await getTopBar();
+  const socialMedia = await getSocialMedia();
+  const footerPages = await getFooterPages();
 
   return (
     <html lang="cs">
@@ -77,7 +80,7 @@ export default async function RootLayout({
         <Navbar />
         {/* Hlavní obsah stránky */}
         <main>{children}</main>
-        <Footer />
+        <Footer socialMedia={socialMedia} footerPages={footerPages} />
       </body>
     </html>
   );
