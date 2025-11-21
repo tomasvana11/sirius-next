@@ -18,7 +18,6 @@ export const Hero: React.FC<HeroProps> = ({
   type = "default",
 }) => {
   const createSlug = (text: string): string => {
-    // Pokud obsahuje #, rozdělíme na cestu a hash
     if (text.includes("#")) {
       const [path, hash] = text.split("#");
       const slugPath = path
@@ -38,7 +37,6 @@ export const Hero: React.FC<HeroProps> = ({
       return `${slugPath}#${slugHash}`;
     }
 
-    // Standardní slug bez hash
     return text
       .toLowerCase()
       .normalize("NFD")
@@ -61,7 +59,6 @@ export const Hero: React.FC<HeroProps> = ({
 
   const showButton = buttonText && finalButtonUrl;
 
-  // Jednoduchá logika: heroImage ze Strapi nebo univerzální fallback
   const strapiImageUrl = getHeroImageUrl(heroImage);
   const imageUrl = strapiImageUrl || "/img/homepage.webp";
   const isExternalImage = !!strapiImageUrl;
@@ -105,6 +102,7 @@ export const Hero: React.FC<HeroProps> = ({
           )}
         </div>
 
+        {/*}
         {type === "hero" && description && (
           <>
             <div className="flex items-center gap-3 pt-12">
@@ -126,6 +124,7 @@ export const Hero: React.FC<HeroProps> = ({
             </Title>
           </>
         )}
+          */}
       </ContentWrapper>
     </section>
   );
