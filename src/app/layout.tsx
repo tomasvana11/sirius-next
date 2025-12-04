@@ -8,6 +8,7 @@ import { Footer } from "@/components/Footer";
 import { getTopBar, renderRichText } from "@/lib/strapi";
 import { ContentWrapper } from "@/components/ContentWrapper";
 import { getSocialMedia, getFooterPages } from "@/lib/strapi";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 // Inicializace Inter fontu
 const inter = Inter({
@@ -39,6 +40,9 @@ export default async function RootLayout({
 
   return (
     <html lang="cs">
+      {process.env.NEXT_PUBLIC_GTM_ID && (
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+      )}
       <body
         className={`${inter.className} ${nunito.variable} antialiased overflow-x-hidden max-w-full`}
       >
