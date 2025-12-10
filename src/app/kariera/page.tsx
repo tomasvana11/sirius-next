@@ -61,23 +61,24 @@ export default async function CareerPage() {
               backgroundPosition: "bottom left",
               backgroundSize: "110% auto",
               backgroundRepeat: "no-repeat",
+              zIndex: 0,
             }}
           />
           <ContentWrapper>
             <Title
               as="h2"
-              className="text-center text-white mb-6 text-3xl lg:text-5xl"
+              className="text-center text-white mb-6 text-3xl lg:text-5xl z-1000 relative"
             >
               {data.careerAdvantages.Title}
             </Title>
-            <p className="text-base text-center text-white/50 mb-12">
+            <p className="text-base text-center text-white/50 mb-12 z-1000 relative">
               {data.careerAdvantages.Description}
             </p>
 
             {/* Karty nad videem */}
             {data.careerAdvantages.cardsAdvantages?.Advantage &&
               data.careerAdvantages.cardsAdvantages.Advantage.length > 0 && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 z-100">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 z-1000">
                   {data.careerAdvantages.cardsAdvantages.Advantage.map(
                     (advantage) => (
                       <IconCard

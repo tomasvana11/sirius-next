@@ -31,14 +31,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
-      // Obrázky ze Strapi (kdyby někdy byly hostované přímo tam)
       {
         protocol: "https",
         hostname: "sirius-strapi-qbx63.ondigitalocean.app",
         port: "",
         pathname: "/uploads/**",
       },
-      // Obrázky z DigitalOcean Spaces CDN
       {
         protocol: "https",
         hostname: "sirius-file-storage.fra1.cdn.digitaloceanspaces.com",
@@ -46,6 +44,7 @@ const nextConfig: NextConfig = {
         pathname: "/sirius-file-storage/**",
       },
     ],
+    qualities: [75, 90, 100],
   },
 };
 
