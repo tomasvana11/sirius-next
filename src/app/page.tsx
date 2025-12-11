@@ -33,6 +33,35 @@ export default async function HomePage() {
       <ContentWrapper>
         <Numbers numbers={homepage.Numbers.Number} />
       </ContentWrapper>
+      <div className="bg-gradient-to-r from-golden-gate/10 to-transparent">
+        <div className="bg-[#220B03] py-16 lg:py-24 ">
+          {homepage.MissionClaim && (
+            <ContentWrapper className="pb-100 lg:pb-60">
+              <Title
+                as="h2"
+                className="text-center text-white mb-12 text-3xl lg:text-5xl"
+              >
+                {homepage.MissionClaim.Claim}
+              </Title>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {homepage.MissionClaim.Mission?.map((mission) => (
+                  <IconCard
+                    key={mission.id}
+                    icon={mission.Icon}
+                    title={mission.Title}
+                    description={mission.Description}
+                  />
+                ))}
+              </div>
+            </ContentWrapper>
+          )}
+        </div>
+
+        <ContentWrapper className="-mt-100 lg:-mt-60">
+          <StepsSection stepsData={homepage.Steps} />
+          {homepage.Facts && <FactsSection factsData={homepage.Facts} />}
+        </ContentWrapper>
+      </div>
       {homepage.appAdvantages && homepage.appBlock && (
         <AppAdvantagesSection
           appAdvantagesData={homepage.appAdvantages}
@@ -40,32 +69,7 @@ export default async function HomePage() {
           reasonCardsData={homepage.reasonCards}
         />
       )}
-      <div className="bg-[#220B03] py-16 lg:py-24 ">
-        {homepage.MissionClaim && (
-          <ContentWrapper className="pb-100 lg:pb-60">
-            <Title
-              as="h2"
-              className="text-center text-white mb-12 text-3xl lg:text-5xl"
-            >
-              {homepage.MissionClaim.Claim}
-            </Title>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {homepage.MissionClaim.Mission?.map((mission) => (
-                <IconCard
-                  key={mission.id}
-                  icon={mission.Icon}
-                  title={mission.Title}
-                  description={mission.Description}
-                />
-              ))}
-            </div>
-          </ContentWrapper>
-        )}
-      </div>
-      <ContentWrapper className="-mt-100 lg:-mt-60">
-        <StepsSection stepsData={homepage.Steps} />
-        {homepage.Facts && <FactsSection factsData={homepage.Facts} />}
-      </ContentWrapper>
+
       <ContentWrapper>
         <FeaturedTestimonials />
         <FeaturedSiriusCast className="pt-8 lg:pt-0" />
@@ -73,7 +77,7 @@ export default async function HomePage() {
         <CareerBanner />
         <FeaturedBlog />
         <div id="formular">
-        <ContactFormBanner />
+          <ContactFormBanner type="kariera" />
         </div>
       </ContentWrapper>
     </div>

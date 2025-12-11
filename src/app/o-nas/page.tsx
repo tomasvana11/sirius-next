@@ -79,7 +79,7 @@ export default async function OnasPage() {
         <FeaturedPartners />
         <CareerBanner />
         <FeaturedBlog />
-        <ContactFormBanner />
+        <ContactFormBanner type="kariera" />
       </ContentWrapper>
     </>
   );

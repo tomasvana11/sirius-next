@@ -130,7 +130,7 @@ export default async function CareerPage() {
         <FeaturedSiriusCast className="mt-8 pt-8 lg:pt-0" />
         <FeaturedBlog />
         <div id="formular">
-          <ContactFormBanner />
+          <ContactFormBanner type="kariera" />
         </div>
       </ContentWrapper>
     </>

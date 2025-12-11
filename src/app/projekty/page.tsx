@@ -25,7 +25,7 @@ export default async function ProjectsPage() {
         <CareerBanner />
         <FeaturedBlog />
         <div id="formular">
-          <ContactFormBanner />
+          <ContactFormBanner type="kariera" />
         </div>
       </ContentWrapper>
     </>

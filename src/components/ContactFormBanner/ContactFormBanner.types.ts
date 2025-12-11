@@ -1,3 +1,4 @@
 export interface ContactFormBannerProps {
-    className?: string;
-  }
+  className?: string;
+  type?: "kariera" | "default";
+}
