@@ -16,7 +16,6 @@ export const AppAdvantagesSection: React.FC<AppAdvantagesSectionProps> = ({
   return (
     <section className="bg-gradient-to-r from-golden-gate/10 to-transparent">
       <ContentWrapper>
-        {/* Title */}
         <div className="pt-8 lg:pt-10 mb-8 lg:mb-12">
           <Title as="h2" className="text-4xl lg:text-5xl text-left">
             <span className="text-neutral-800">
@@ -86,7 +85,7 @@ export const AppAdvantagesSection: React.FC<AppAdvantagesSectionProps> = ({
               </div>
             </div>
 
-            <div className="flex flex-col gap-6 h-full">
+            {/*<div className="flex flex-col gap-6 h-full">
               {reasonCardsData?.map((reason, index) => (
                 <div
                   key={reason.id}
@@ -110,6 +109,62 @@ export const AppAdvantagesSection: React.FC<AppAdvantagesSectionProps> = ({
                   <p className="text-neutral-600">{reason.Description}</p>
                 </div>
               ))}
+            </div>*/}
+            <div className="flex flex-col bg-neutral-100 rounded-xl p-6 gap-6 h-full">
+              <Title
+                as="h4"
+                className="text-neutral-800 text-lg text-center leading-none"
+              >
+                Stáhněte si naší aplikaci
+              </Title>
+              <div className="flex flex-col gap-3">
+                <div className="flex flex-col items-center gap-3 p-3 rounded-xl bg-golden-gate hover:bg-golden-gate/85 transition-colors duration-200 w-fit mx-auto">
+                  <Image
+                    src="/img/star_advisor_apple.png"
+                    alt="Apple App Store QR"
+                    width={128}
+                    height={128}
+                    className="w-28 h-28 xl:w-32 xl:h-32 rounded-md "
+                  />
+                  <a
+                    href="https://apps.apple.com/cz/app/star-advisor/id6503191460?l=cs"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block"
+                  >
+                    <Image
+                      src="/img/apple_app_store_button.svg"
+                      alt="Apple App Store Button"
+                      width={128}
+                      height={40}
+                      className="w-28 xl:w-32 h-auto"
+                    />
+                  </a>
+                </div>
+                <div className="flex flex-col items-center gap-3 p-3 rounded-xl bg-golden-gate hover:bg-golden-gate/85 transition-colors duration-200 w-fit mx-auto">
+                  <Image
+                    src="/img/star_advisor_google.png"
+                    alt="Google Play Store QR"
+                    width={128}
+                    height={128}
+                    className="w-28 h-28 xl:w-32 xl:h-32 rounded-md "
+                  />
+                  <a
+                    href="https://play.google.com/store/apps/details?id=cz.humanit.tibiq.sa2025.app&hl=cs"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block"
+                  >
+                    <Image
+                      src="/img/google_play_store_button.svg"
+                      alt="Google Play Store Button"
+                      width={128}
+                      height={40}
+                      className="w-28 xl:w-32 h-auto"
+                    />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -141,27 +196,44 @@ export const AppAdvantagesSection: React.FC<AppAdvantagesSectionProps> = ({
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {reasonCardsData?.map((reason, index) => (
-              <div key={reason.id} className="bg-neutral-100 rounded-xl p-6">
-                <div
-                  className={`flex items-center gap-4 mb-4 ${
-                    index % 2 === 1 ? "flex-row-reverse" : ""
-                  }`}
-                >
-                  <div className="w-12 h-12 bg-[#EC4C19] rounded-full flex items-center justify-center shrink-0">
-                    <Icon name={reason.icon.Icon} size="M" variant="white" />
-                  </div>
-                  <Title
-                    as="h4"
-                    className="text-neutral-800 text-lg leading-none"
-                  >
-                    {reason.Title}
-                  </Title>
-                </div>
-                <p className="text-neutral-600">{reason.Description}</p>
-              </div>
-            ))}
+          {/* Sekce s buttony pro mobil - bez QR kódů */}
+          <div className="flex flex-col bg-neutral-100 rounded-xl p-6 gap-4">
+            <Title
+              as="h4"
+              className="text-neutral-800 text-lg text-center leading-none"
+            >
+              Stáhněte si naší aplikaci
+            </Title>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="https://apps.apple.com/cz/app/star-advisor/id6503191460?l=cs"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block"
+              >
+                <Image
+                  src="/img/apple_app_store_button.svg"
+                  alt="Apple App Store Button"
+                  width={128}
+                  height={40}
+                  className="w-32 h-auto"
+                />
+              </a>
+              <a
+                href="https://play.google.com/store/apps/details?id=cz.humanit.tibiq.sa2025.app&hl=cs"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block"
+              >
+                <Image
+                  src="/img/google_play_store_button.svg"
+                  alt="Google Play Store Button"
+                  width={128}
+                  height={40}
+                  className="w-32 h-auto"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </ContentWrapper>

@@ -610,16 +610,39 @@ export async function getSiriusCastBanner(): Promise<SiriusCastBanner | null> {
  */
 export async function getBranches(): Promise<Branch[]> {
   try {
-    const response = await strapiRequest<BranchesResponse>(
-      "branches",
-      {
-        populate: {
-          "populate[clenove_tymu][populate]": "*",
-        },
-        sort: ["City:asc"],
+    const allBranches: Branch[] = [];
+    let page = 1;
+    let hasMore = true;
+    const pageSize = 100; // Načítáme po 100 záznamech
+
+    while (hasMore) {
+      const response = await strapiRequest<BranchesResponse>(
+        "branches",
+        {
+          populate: {
+            "populate[clenove_tymu][populate]": "*",
+          },
+          sort: ["City:asc"],
+          pagination: {
+            page,
+            pageSize,
+          },
+        }
+      );
+
+      if (response.data && response.data.length > 0) {
+        allBranches.push(...response.data);
+        
+        // Zkontrolujeme, jestli jsou ještě další stránky
+        const totalPages = response.meta?.pagination?.pageCount || 1;
+        hasMore = page < totalPages;
+        page++;
+      } else {
+        hasMore = false;
       }
-    );
-    return response.data || [];
+    }
+
+    return allBranches;
   } catch (error) {
     console.error("Failed to fetch branches:", error);
     return [];
